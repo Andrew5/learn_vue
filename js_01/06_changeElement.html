@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            margin:  200px 100px;
+            display: flex;
+            padding: 10px;
+            border: 1px solid red;
+        }
+        .nav {
+            color: rgb(46, 16, 111);
+        }
+        .active {
+            color: red;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <!-- <img src="./images/1.png" alt=""> -->
+    <!-- <div class="box"></div> -->
+    <!-- <div class="nav">1234</div> -->
+    <!-- <div class="box active">文字</div> -->
+    <input type="text" value="电脑">
+    <input type="checkbox" name="" id="">
+    <!-- div{$}*5 -->
+    <div data-id='1' data-spm='位置'>1</div>
+    <div data-id='2'>2</div>
+    <div data-id='3'>3</div>
+    <div data-id='4'>4</div>
+    <div data-id='5'>5</div>
+    <button class="btn" disabled>我已经阅读用户协议(5)</button>
+    <script>
+        // const img = document.querySelector('img');
+        // // // 修改 对象.属性 = 值
+        // // img.src = './images/WechatIMG50048.jpg';
+        // // img.title = '修改后的图片';
+
+        // function getRandom(N,M) {
+        //     return Math.floor(Math.random() * (M - N + 1) + N);
+        // }
+        // const random = getRandom(1,2);
+        // img.src = `./images/${random}.png`;
+
+        // const box = document.querySelector('.box');
+        // box.style.width = '300px';
+        // box.style.height = '300px';
+        // box.style.backgroundColor = 'skyblue';
+        // box.style.border = '2px solid red';
+        // box.style.borderTop = '2px solid green';
+        // box.style.borderLeft = '2px solid orange';
+        // box.style.borderRight = '2px solid black';
+
+        // const div = document.querySelector('div');
+        // div.className = 'nav box'
+        // 增加 删除类
+        // const box = document.querySelector('.box');
+        // box.classList.add('active');
+        // box.classList.remove('box');
+        // 切换类
+        // box.classList.toggle('active');
+
+        // 操作元素属性
+        const uname = document.querySelector('input');
+        uname.value = '手机';
+        // uname.type = 'password';//设置密码状态
+        // uname.disabled = true;//禁用输入框
+        // uname.readOnly = true;//只读
+        uname.placeholder = '请输入用户名';//设置默认提示信息
+        uname.maxLength = 6;//设置最大输入长度
+        uname.minLength = 2;//设置最小输入长度
+        uname.name = 'uname';//设置表单提交时的名称// 字符串里只有空字符串是false 其余都是ture
+        uname.required = true;//设置必填项
+        uname.autofocus = true;//自动获取焦点
+        
+        const checkbox = document.querySelector('input[type="checkbox"]');
+        console.log(checkbox.checked); // 输出 true 或 false
+        checkbox.checked = true;//设置复选框的选中状态
+        
+        // 自定义属性
+        const one = document.querySelector('div');
+        console.log(one.dataset.id);
+        console.log(one.dataset.spm);
+        
+        // 定时器间歇函数 每秒/执行 返回一个ID类型
+        let time = 1000;
+        // setInterval(function() {
+        //     console.log('定时器');
+        // }, time);
+        let i = 0;
+        function fn(){
+            i++
+            console.log(`一秒一次`)
+            document.write(`${i}`);
+        }
+        let n = setInterval(fn, time);
+        console.log(n);
+
+
+        let m = setInterval(function() {
+        console.log(11);
+        }, 2000);
+        console.log(m);
+
+        // 关闭定时器
+        clearInterval(n);
+        clearInterval(m);
+
+        const btn = document.querySelector('.btn');
+        let a = 5;
+        let b = setInterval(function() {
+            a--;
+            // 三个等于号是"严格相等"。它比较两个值是否相等，但不会进行类型转换
+            // 二个等于号是"宽松相等"或"抽象相等"。它比较两个值是否相等，但在比较之前会进行类型转换
+            if(a === 0){
+                btn.disabled = false;
+                clearInterval(b);
+            }
+            btn.innerHTML = `${a}秒后重新获取`;
+        },1000)
+        // nth-child(n) 选择属于其父元素的第 n 个子元素，n 可以是数字、关键字或公式。
+
+
+    </script>
+</body>
+</html>

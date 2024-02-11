@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .pink {
+            background-color: pink;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #000;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: center;
+            margin: auto;
+        }
+
+        span {
+            display: inline-block;
+            width: 100px;
+            /* height: 100px; */
+            background-color: pink;
+            /* border: 1px solid #000; */
+            margin: 4px;
+            /* float: left; */
+            /* overflow: hidden; */
+            /* display: block; */
+            /* display: none; */
+            /* display: inline; */
+            /* display: table-cell; */
+            /* display: flex; */
+            padding: 5px 10px;
+            border: 1px solid #7c2424;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px pink;
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <button class="pink">按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <button>点击 </button>
+
+    <h2>
+        订单确认
+    </h2>
+
+    <div class="box">
+        <div style="height: 123px;">
+            <span>123</span>
+            <h4>第1季度</h4>
+        </div>
+        <div style="height: 156px;">
+            <span>156</span>
+            <h4>第2季度</h4>
+        </div>
+        <div style="height: 120px;">
+            <span>120</span>
+            <h4>第3季度</h4>
+        </div>
+        <div style="height: 210px;">
+            <span>210</span>
+            <h4>第4季度</h4>
+        </div>
+    </div>
+    //
+    <script>
+        //     //1、用户输入
+        //     let price = +prompt(`请输入商品价格：`)
+        //     let num = +prompt(`请输入商品数量：`)
+        //     let address = prompt(`请输入收货地址：`)
+
+        //     //2、计算总量
+        //     let total = price * num
+        //     document.write(`
+        //     <table>
+        //     <tr>
+        //         <th>商品名称</th>
+        //         <th>商品价格</th>
+        //         <th>商品数量</th>
+        //         <th>总价</th>
+        //         <th>收货地址</th>
+        //     </tr>
+        //     <tr>
+        //         <td>小米青春版</td>
+        //         <td>${price}元</td>
+        //         <td>${num}</td>
+        //         <td>${total}元</td>
+        //         <td>${address}</td>
+        //     </tr>
+        // </table>
+        // `)
+        //     let num33 = 1
+        //     num += 3
+        //     console.log(num)
+
+        //     // 不管是++或者--是在前还是在后,都是在原来的取值上自行增1或减1 类似于 => a+=1
+        //     // 符号前置 =>先加1 再使用(快捷记忆：++在前,先加)
+        //     // 符号后置 =>先使用 再加1(快捷记忆：++在后,后加)
+
+        //     let num44 = 1
+        //     console.log(`后加： ${num44++}`)//1
+        //     console.log(`后加： ${num44}`);
+        //     console.log(`后加： ${++num44}`)//4
+
+        //     // console.log(3>5?3:5)
+        //     // 3<5?alert('真的'):alert('假的')
+
+        //     let username = prompt('名字')
+        //     let password = prompt('密码')
+        //     if (username == 'admin' && password == '123456') {
+        //         console.log('登录成功')
+        //     } else {
+        //         console.log('登录失败')
+        //     }
+
+        //     let year = +prompt('请输入年份')
+        //     if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        //         console.log(`${year}闰年`)
+        //     } else {
+        //         console.log(`${year}平年`)
+        //     }
+
+        //     let score = +prompt('请输入成绩：')
+        //     if (score >= 90) {
+        //         console.log('A')
+        //     } else if (score >= 80) {
+        //         console.log('B')
+        //     } else if (score >= 70) {
+        //         console.log('C')
+        //     } else if (score >= 60) {
+        //         console.log('D')
+        //     } else {
+        //         console.log('E')
+        //     }
+
+        //     let num2 = 1
+        //     num2 += 1
+        //     console.log(num2)
+        //     console.log(num2++);
+        //     while (num2 <= 3) {//这是一个循环，只要num2的值小于等于2，循环就会继续执行。
+        //         document.write(`我要循环${num2}<br>`)
+        //         num2++
+        //     }
+
+        //     //3、输出
+        //     // document.write(`商品总价格：${total}`)
+        //     // document.write(`<br>收货地址：${address}`)
+        //     // document.write(`<br><a href="https://www.baidu.com">百度一下</a> </br>`)
+        //     //4、页面跳转
+        //     // window.location.href = "https://www.baidu.com"
+        //     let num55 = prompt('请输入一个数字进行比较')
+        //     num55 < 10 ? 0 + num55 : num55
+        //     console.log(num55)
+
+        //     let num66 = +prompt('请您输入第一个数字')
+        //     let num77 = +prompt('请您输入第二个数字')
+        //     let resolute = prompt('请您输入+-*/其中一个：')
+        //     switch (resolute) {
+        //         case '+':
+        //             console.log("两个数的加法操作是" + num66 + num77)
+        //             break
+        //         case '-':
+        //             console.log("两个数的减法操作是" + num66 - num77)
+        //             break
+        //         case '*':
+        //             console.log("两个数的加乘法操作是" + num66 * num77)
+        //             break
+        //         case '/':
+        //             console.log("两个数的除法操作是" + num66 / num77)
+        //             break
+        //         default:
+        //             console.log('输入错误')
+        //             break
+        //     }
+        //     // console.log(resolve)
+
+        //     console.log('计算开始了')
+
+        //     let num88 = 1
+        //     let num99 = 0
+        //     while (num88 <= 100) {
+        //         // num99 += num88
+        //         num99 = num99 + num88
+        //         num88++
+        //     }
+        //     console.log( `num99的值是多少: ${num99}`)
+        //     console.log( 'num99的值是多少: '+ num99)
+        //     console.log("num99的值是多少: "+ num99)
+
+        // let num1 = 1
+        // while (num1 <= 5){
+        //     if (num1 == 3){
+        //         num1++
+        //         continue
+        //     }
+        //     console.log(`我要吃${num1}包子`)
+        //     num1++
+        // }
+
+        // while (true){
+        //     let str = prompt("请输入你的名字")
+        //     if (str == '名字'){
+        //         break
+        //     }
+        // }
+
+        // while (true) {
+        //     let result = +prompt(`
+        //     请输入你的名字
+        //     1、存钱
+        //     2、取钱
+        //     3、查看
+        //     4、退出
+        //     `)
+        //     // 如果用户输入的是4 则推出循环
+        //     if (result === 4) {
+        //         break
+        //     }
+        //     // 根据输入做操作
+        //     switch (result) {
+        //         case 1:
+        //     }
+        // }
+
+        // 模拟存取钱
+        //     let money = 100
+        //     while (true) {
+        //         let re = +prompt(`
+        //     请选择操作：
+        //     1、存钱
+        //     2、取钱
+        //     3、查看余额
+        //     4、退出
+        //     `)
+        //     if (re === 4) {
+        //         break
+        //     }
+        //     switch (re) {
+        //         case 1:
+        //             money += +prompt(`存多少钱`)
+        //             break
+        //         case 2:
+        //             money -= +prompt(`取多少钱`)
+        //             break
+        //         case 3:
+        //             alert(`你的余额是${money}`)
+        //             break
+        //     }
+        // }
+
+        // 批量剪辑 tts-vue v1.9.15
+
+        let sum = 0;
+        for (let i = 0; i < 100; i++) {
+            sum += i
+        }
+        console.log(sum)
+
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i])
+        }
+
+        let arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        for (let i = 0; i < arr1.length; i++) {
+            if (arr1[i] % 2 === 0) {
+                console.log(arr1[i])
+            }
+        }
+
+        let arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        for (let i = 0; i < arr2.length; i++) {
+            if (arr2[i] % 2 !== 0) {
+                console.log(arr2[i])
+            }
+        }
+
+        // 计算1到100之间所有偶数的和，并将结果保存在 sum1 变量中。
+        let sum1 = 0;
+        for (let i = 1; i <= 100; i++) {
+            if (i % 2 === 0) {// 这个判断的意思是检查 i 是否是偶数。% 是取余运算符，如果 i 除以2的余数为0，那么 i 就是偶数。
+                sum1 += i
+            }
+        }
+        document.write(`<h1>hello world</h1>${sum1}`)
+
+        // 实现输出5个小星星   
+        for (let i = 1; i <= 5; i++) {
+            document.write(`🌟`)
+        }
+
+        // 实现1到100之和并且输出
+        let sum2 = 0;
+        for (let i = 1; i <= 100; i++) {
+            sum2 += i
+        }
+        document.write(`<h1>hello world${sum2}</h1>`)
+
+        // 循环
+        let array1 = [`开手机`, `测试`, `元素`, `数组`, `关系`, `关o系`]
+        for (let i = 0; i < array1.length; i++) {
+            console.log(array1[i]);
+            document.write(`<h1>数组：${array1[i]}</h1>`)
+        }
+
+        //99乘法表
+        for (let i = 1; i <= 9; i++) {
+            for (let j = 1; j <= i; j++) {
+                // 打印出类似9X9的乘法表表格
+                document.write(`<span> ${j} X ${i} = ${i * j}</span>`)
+                // table += '<td>' + i*j + '</td>';
+            }
+            document.write(`<br>`)
+        }
+
+        // 打印五个小星星
+        for (let i = 1; i <= 5; i++) {
+            document.write(`<h1>数组：${i}</h1>`)
+        }
+
+        // 打印100以内奇数
+        for (let i = 1; i <= 100; i++) {
+            if (i % 2 !== 0) {
+                document.write(`<h1>数组：${i}</h1>`)
+            }
+        }
+
+        // 双重for循环嵌套
+        // 外面执行一次 里面全部执行
+        for (let i = 1; i <= 3; i++) {
+            document.write(`第${i}天<br>`)
+            for (let j = 1; j <= 5; j++) {
+                document.write(`记住了第${j}个单词<br>`)
+            }
+        }
+        // // 打印五颗小星星
+        // let row = +prompt(`行`)
+        // let col = +prompt(`列`)
+        // for (let i = 1; i <= row; i++){
+        //     for (let j= 1; j <=col; j++){
+        //         document.write(`🌟`)
+        //     }
+        //     document.write(`<br>`)
+        // }
+
+        // 打印三角形
+        for (let i = 1; i <= 5; i++) {
+            for (let j = 1; j <= i; j++) {
+                document.write(`💠`)
+            }
+            document.write(`<br>`)
+        }
+        //MARK:
+        // 数组（Array）： 有序的集合，可以通过索引访问。数组是最常见的数据结构之一。
+        // 对象（Object）： 无序的键值对集合。对象的键通常是字符串或符号，值可以是任意数据类型。
+        // 集合（Set）： 一组唯一的值，没有重复。可以用来存储任何数据类型。
+        // 映射（Map）： 一组键值对的集合，类似于对象。键可以是任何数据类型。
+        // 栈（Stack）： 具有后进先出（LIFO）特性的数据结构。
+        // 队列（Queue）： 具有先进先出（FIFO）特性的数据结构。
+        // 链表（Linked List）： 一种线性数据结构，链表中的每个节点都包含指向下一个节点的引用。
+        // 树（Tree）： 一组节点的集合，以根节点开始。每个节点都包含零个或多个子节点。
+        // 堆（Heap）： 一组节点的集合，以某种方式进行优先排序。
+
+        //数组
+        let array2 = [1, 2, 3, 'pink', true]
+        let array3 = new Array(1, 2, 3, 'pink', true)
+        //使用for循环便利数组
+        for (let i = 0; i < array2.length; i++) {
+            document.write(array2[i])
+        }
+        document.write(`<br>`)
+        //开头追加
+        // unshift 方法用于在数组的开头添加一个或多个元素，并返回新的数组长度。
+        array2.unshift("Apple", "Mango")
+        document.write(`${array2}`)
+        document.write(`<br>`)
+        // shift 方法用于移除数组的第一个元素，并返回被移除的元素。
+        array2.shift()
+        document.write(`${array2}`)
+        document.write(`<br>`)
+
+        // 数组筛选
+        var originalArray = [12, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        //         var 声明的变量是函数作用域或全局作用域，它们在整个函数或全局范围内都是可访问的。初始化的值为 undefined
+        //          let 声明的变量是块级作用域的，它们只在包含它们的块（如 {} 内部）中可访问。初始化的值为 undefined，在声明前访问会导致 ReferenceError。
+        //          使用 filter 方法筛选大于等于 10 的元素
+        //          使用 var 可以在同一作用域内多次声明同一个变量，不会引发错误。
+        //          使用 let 则不会，同一作用域内只能声明一次同一个变量。  
+        //          使用 let 在同一作用域内重复声明同一个变量会引发错误。
+        var newArray = originalArray.filter(function (element) {
+            return element >= 10;
+        });
+        console.log("筛选1:" + newArray);
+
+        let array4 = [12, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        let newArray4 = []
+        for (let i = 0; i < array4.length; i++) {
+            if (array4[i] >= 10) {
+                // 满足条件 追加给新的数组
+                newArray4.push(array4[i])
+            }
+        }
+        console.log("筛选2:" + newArray4);
+
+        //数组删除的三种方法
+        newArray4.pop()// 一次只能删除一个，依次删除最后一个
+        newArray4.shift()// 一次只能删除一个，依次删除第一个
+        newArray4.splice(0, 1)// 删除指定位置的元素，从0开始，删除一个
+        // unshift() 方法的实现原理是创建一个新的数组，并将要添加的元素和原数组的元素依次添加到新数组中
+        newArray4.unshift(0)//添加到数组的开头
+        // 创建一个简单的字典对象
+        var myDictionary = {
+            key1: 'value1',
+            key2: 'value2',
+            key3: 42,
+            key4: ['a', 'b', 'c']
+        };
+
+        // 访问字典中的值
+        console.log(myDictionary.key1); // 输出 'value1'
+        console.log(myDictionary['key3']); // 输出 42
+        console.log(myDictionary.key4); // 输出 ['a', 'b', 'c']
+
+        // 创建一个Map对象
+        var myMap = new Map();
+
+        // 向Map中添加键值对
+        myMap.set('key1', 'value1');
+        myMap.set('key2', 'value2');
+        myMap.set('key3', 42);
+
+        // 访问Map中的值
+        console.log(myMap.get('key1')); // 输出 'value1'
+        console.log(myMap.get('key3')); // 输出 42
+
+        document.write(`<div class="box">`)
+        for (let i = 0; i < 5; i++) {
+            document.write(`
+                <div style="height:100px;">
+                    <span>100</span>
+                    <h4>第1季度</h4>
+                </div>
+            `)
+        }
+        document.write(`</div>`)
+
+        // 冒泡排序
+        // 大致思想
+        // let num1 = 10
+        // let num2 = 20
+        // let temp = num1 // temp 10
+        // num1 = num2 // num1 20
+        // num2 = temp // num2 10
+
+        let array5 = [1, 3, 2, 5, 4]
+        for (let i = 0; i < array5.length; i++) {
+            for (let j = 0; j < array5.length - 1 - i; j++) {// 遍历到倒数第二个元素
+                // 将当前未排序的最大（或最小）元素“冒泡”到序列的最末端，直到整个序列都排序完成
+                if (array5[j] > array5[j + 1]) {//比较当前元素 array5[j] 和其下一个元素 array5[j + 1]。如果当前元素大于下一个元素，则进入下一行进行交换。
+                    let temp = array5[j]
+                    array5[j] = array5[j + 1]//将下一个元素 array5[j + 1] 赋值给当前元素 array5[j]。
+                    array5[j + 1] = temp//将临时存储的元素（原当前元素）重新赋值给下一个元素 array5[j + 1]
+                }
+            }
+        }
+        console.log(array5)
+        console.log("调用方法排序" + array5.sort())
+
+        // 插入排序
+        let array6 = [1, 3, 2, 5, 4];
+        for (let i = 1; i < array6.length; i++) {
+            let key = array6[i];
+            let j = i - 1;
+            // 将大于key的元素向后移动一位  
+            while (j >= 0 && array6[j] > key) {
+                array6[j + 1] = array6[j];
+                j = j - 1;
+            }
+            array6[j + 1] = key;
+        }
+        console.log(array6)
+        // 快速排序
+        let array7 = [1, 3, 2, 5, 4];
+        array7.sort((a, b) => a - b);
+        console.log(array7);
+
+        const sortedArray = quickSortMethod(array7);
+        console.log("Original array:", array7);
+        console.log("Sorted array:", sortedArray);
+        function quickSortMethod(arr) {
+            if (arr.length <= 1) {
+                return arr;
+            }
+
+            const pivot = arr[0];
+            const left = [];
+            const right = [];
+
+            for (let i = 1; i < arr.length; i++) {
+                // 将数组中小于基准的元素放在左边，大于基准的元素放在右边
+                if (arr[i] < pivot) {
+                    left.push(arr[i]);
+                } else {
+                    right.push(arr[i]);
+                }
+            }
+            return quickSortMethod(left).concat(pivot, quickSortMethod(right));
+        }
+
+        // 函数声明、使用
+        let aaaa = sumq(5, 10)
+        document.write("计算结果：" + aaaa + "<br>")
+        console.log(`函数声明、使用: ${aaaa}`)
+        function sumq(a, b) {
+            return a + b;
+        }
+
+        function getSum() {
+            let sum = 0
+            for (let i = 1; i <= 100; i++) {
+                sum += 1
+            }
+            console.log(sum);
+        }
+        getSum()
+
+        function getSum1(end) {
+            let sum = 0
+            for (let i = 1; i <= end; i++) {
+                sum += i
+            }
+            console.log(sum);
+        }
+        getSum1(50)
+
+        // 形参可以理解为是在这个函数内声明的变量（比如num1=10）实参可以理解为是给这个变量赋值
+        function getSum2(start, end) {//形参：声明函数时写在函数名右边小括号里的叫形参（形式上的参数）
+            let sum = 0
+            for (let i = start; i <= end; i++) {
+                sum += i
+            }
+            console.log(sum);
+        }
+        // getSum1(1,50)
+        getSum2(100, 101)//实参：调用函数时写在函数名右边小括号里的叫实参（实际上的参数）
+
+        // 函数求和
+        function getSum3(num1, num2) {
+            document.write("函数求和" + num1 + num2)
+        }
+
+        getSum3(10, 20)
+
+        // 1、封装函数
+        function getArraySum(arr = []) {
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i]
+            }
+            console.log(sum);
+        }
+        getArraySum([1, 2, 3, 4, 5, 6])
+        getArraySum([110, 22, 33, 44])
+        getArraySum()
+
+        // 求n~m的累加
+        function getSum4(n = 0, m = 0) {// 函数的参数默认值是undefined 然后，你在函数体中使用了n || 0和m || 0来判断参数值
+            let sum = 0
+            for (let i = n; i <= m; i++) {
+                sum += i
+            }
+            console.log(sum);
+            return sum
+        }
+        // let num1 = +prompt('请输入开始')
+        // let num2 = +prompt('请输入结束')
+        let num1 = 1
+        let num2 = 100
+        let result = getSum4(num1, num2)
+        console.log("最后得出的结果是：" + result)
+
+        function getmax(x = 0, y = 0) {
+            return x > y ? x : y
+        }
+
+        let max = getmax(10, 20)
+        let min = getmax(10, 20)
+        console.log("<br>最大值" + max);
+        let array8 = [12, 0, 6, 1, 77, 0, 52, 0, 25, 7];
+        console.log("<br>最小值" + min);
+        console.log(`最小值:${array8}`);
+        //绘制一个分割线
+        document.write("<hr>")
+        // 数组中返回最大值 最小值
+        function getmax2(arr = []) {
+            if (arr.length === 0) return [Infinity, -Infinity]; // 如果数组为空，返回无穷大和负无穷大  
+            for (let i = 1; i < arr.length; i++) {
+                // 最大值
+                if (max < arr[i]) {
+                    max = arr[i]
+                }
+                // 最小值
+                if (min > arr[i]) {
+                    min = arr[i]
+                }
+            }
+            return [max, min];
+        }
+
+        // 遍历对象
+        let obj = {
+            name: '张',
+            age: 18,
+            sex: '男'
+        }
+        for (let key in obj) {
+            console.log(key + ':' + obj[key]);
+        }
+
+        let students = [
+            {
+                name: '小明',
+                age: 18,
+                sex: '男',
+                hometown: '河南'
+            },
+            {
+                name: '小红',
+                age: 18,
+                sex: '男',
+                hometown: '河南'
+            },
+
+            {
+                name: '小刚',
+                age: 18,
+                sex: '男',
+                hometown: '河南'
+            },
+            {
+                name: '小丽',
+                age: 18,
+                sex: '男',
+                hometown: '河南'
+            },
+        ]
+        for (let i = 0; i < students.length; i++) {
+            console.log(students[i].name);
+            document.write(`
+            <tr>
+                <td>${i + 1}</td>
+                <td>${students[i].name}</td>
+                <td>${students[i].sex}</td>
+                <td>${students[i].hometown}</td>
+            </tr>
+            `);
+        }
+
+        // 数组去重
+        function getArrayValue(arr = []) {
+            let newArr = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (newArr.indexOf(arr[i]) === -1) {
+                    newArr.push(arr[i])
+                }
+            }
+            return newArr;
+        }
+        // getArrayValue([11,3,55,29])
+
+
+        // 数组中返回最大值 最小值
+        // let btn = document.querySelector('button')
+        // btn.onclick = function(){
+        //     alert(`我是弹框`)
+        // }
+
+        // 第一种写法
+        // (function(){
+        //     console.log(`我是自执行函数`);
+        // })()
+
+        // (function(){})()
+
+        // (function(){
+        //     let num = 10
+        // })();
+        // (function(){
+        //     let num=20
+        // })();
+
+        // // 形参
+        // (function(X,Y) {
+        //     console.log(X+Y);
+        // })(10,100);//括号内是函数调用
+
+        // //第二种写法
+        // (function(){}())
+
+        function getTime(t) {
+            let h = parseInt(t / 60 / 60 % 24)
+            let m = parseInt(t / 60 % 60)
+            let s = parseInt(t % 60)
+
+            h = h < 10 ? '0' + h : h
+            m = m < 10 ? '0' + m : m
+            s = s < 10 ? '0' + s : s
+            console.log(`${h}时${m}分${s}秒`)
+        }
+        getTime(1000)
+
+        //内置对象
+        // 返回一个0-1之间，并且包括0不包括1的随机数[0,1)
+        console.log(Math.round(1.5))
+        console.log(Math.floor(1.5))
+        console.log(Math.ceil(1.5))
+        console.log(Math.random())
+        console.log(Math.random() * 10)
+        console.log(Math.floor(Math.random() * 10))//向下取整
+        console.log(Math.floor(Math.random() * 10) + 1)
+        console.log(Math.ceil(1.5))// 向上取整
+        console.log(Math.ceil(Math.random() * 10))
+        console.log(Math.ceil(Math.random() * (10 + 1)))//0-10的随机数
+        console.log(Math.max(10, 20, 30, 40, 50))
+        // 幂运算
+        console.log(Math.pow(2, 3))
+        //绝对值
+        console.log(Math.abs(-10))
+        //null 类似 let obj = {}
+        //undefined 类似 let obj;
+        //NaN 类似 let obj = {}
+        let colorarr = ['red', 'green', 'blue']
+        let random = Math.floor(Math.random() * colorarr.length)
+        console.log("最后得出的结果是：" + colorarr[random])
+        // 生成N-M之间的随机数公示
+        // Math.floor(Math.random() * (M - N + 1)) + N
+
+        function getRandom(N, M) {
+            return Math.floor(Math.random() * (M - N + 1)) + N
+        }
+        // let randomom = getRandom(1, 10)
+        // console.log(randomom)
+        // while (true) {
+        //     let numnum = +prompt('请输入你猜的数字:')
+        //     if (numnum > randomom) {
+        //         alert('猜大了')
+        //     } else if (numnum < randomom) {
+        //         alert('猜小了')
+        //     } else {
+        //         alert('恭喜你猜对了')
+        //         break;
+        //     }
+        // }
+
+        // 生成随机颜色
+        function getRandomColor(flage) {
+            if (flage) {
+                return '#' + Math.floor(Math.random() * 0xffffff).toString(16)
+            }else{
+                return 'rgb(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ')'
+            }
+            // let str = '0123456789abcdef'
+            // let color = '#'
+            // for (let i = 0; i < 6; i++) {
+            //    color += str[Math.floor(Math.random() * str.length)]
+            // }
+            return color
+        }
+        getRandomColor(false)
+        const div = document.querySelector('div')
+        div.style.width = '200px'
+        div.style.height = '200px'
+        div.style.backgroundColor = getRandomColor(false)
+        
+        
+        
+
+    </script>
+    <!-- <script>
+        console.log(`pink`+100)
+
+        document.write("div1标签")
+        document.write("<h1>div标签</h1>")
+        console.log("1234")
+
+        let bts = document.querySelectorAll('button')
+        for (let i = 0; i < bts.length; i++) {
+            bts[i].addEventListener('click', function () {
+                document.querySelector('.pink').className = ''
+                this.className = 'pink'
+            })
+        }
+
+        // let age = 10 
+        // console.log(age)
+        // age = prompt("请输入内容")
+        // // 将age的值赋值到按钮3上
+        // document.querySelector('button:nth-child(5)').innerHTML = age
+        // let username = prompt("请输入用户名")
+        // let password = prompt("请输入密码")
+        // document.write(username + " " + password)
+
+        let num1 = 10
+        let num2 = 20
+        let temp
+        temp = num1
+        num1 = num2
+        num2 = temp
+        console.log(num1)
+        console.log(num2)
+
+        let arr = ["13231","adfasd"]
+        console.log(arr[0])
+
+        // 1. 创建一个对象
+        // 2. 设置对象的属性
+        // 3. 设置对象的属性值
+        // 4. 访问对象的属性
+        let obj = {
+            name: "张三",
+            age: 18,
+            sex: "男"
+        }
+        console.log(obj.name)
+        console.log(obj.age)
+        console.log(obj.sex)
+
+        // 1. 创建一个对象
+        // 2. 设置对象的属性
+        // 3. 设置对象的属性值
+        // 4. 访问对象的属性
+        let obj2 =
+        {
+            name: "张三",
+            age: 18,
+            sex: "男"
+        }
+        console.log(obj2.name)
+        console.log(obj2.age)
+        console.log(obj2.sex)
+
+        const PI = 3.14159265358979323846264338327
+        console.log(PI)
+
+        var num = 123
+        num = "abc"
+        console.log(num)
+        console.log(typeof(num))
+
+        // 页面弹出输入框
+        let r = prompt("请输入半径")
+        // 计算圆的面积
+        let area = PI * r * r
+        console.log("半径是"+area)
+
+        // let age = 25
+        let age = prompt("请输入年龄")
+        document.write(`我的年龄是` + age + "岁")
+        document.write(`我的年龄是${age} 岁`)
+
+        console.log(Number(`123`))
+
+        let num11 = +prompt('请输入第一个数字：')
+        let num22 = +prompt('请输入第二个数字：')
+        // alert(num11 + num22)// 字符串类型
+        alert(`两数相加的和是 ${num11 + num22}`)// 字符串类型 -->
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初识vue</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+
+</head>
+
+<body>
+    <!--  js表达式和JS代码(语句)
+            1、表达式：一个表达式会产生一个值，可以放在任何一个需要值的地方；
+            2、js代码(语句)
+            3、vue和容器一一对应 配合组建一起使用
+            4、只有一个vue实例
+            5、{{xxx}}中的xx要写成js表达式 且xxx可以自动读取到data中的所有的属性
+            6、一旦data中的数据发生改变，那么模版中用到的该数据的地方也会自动更新
+         -->
+    <!-- 容器 -->
+    <div id="demo">
+        <h1>Hello {{name.toUpperCase()}} ,{{address}}</h1>
+    </div>
+
+    <div id="root">
+        <h1>Hello {{name}} ,{{address}}</h1>
+    </div>
+
+    <div id="root2">
+        <h1>Hello {{name}} ,{{address}},{{Date.now()}}</h1>
+        <button>点我更换名字</button>
+    </div>
+
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+        // 创建实例
+        new Vue({
+            el: '#demo',//el用于指定当前vue实例为哪个容器服务
+            // el:document.getElementById('root'),
+            data: {//对象
+                name: '测试',
+                address: '测试城市'
+            }
+        })
+        new Vue({
+            el: '#root',//el用于指定当前vue实例为哪个容器服务
+            // el:document.getElementById('root'),
+            data: {//对象
+                name: '南京',
+                address: '上海'
+            }
+        })
+        new Vue({
+            el: '#root2',//el用于指定当前vue实例为哪个容器服务
+            // el:document.getElementById('root'),
+            data: {//对象
+                name: '硅谷',
+                address: '北京'
+            }
+        })
+    </script>
+</body>
+
+</html>

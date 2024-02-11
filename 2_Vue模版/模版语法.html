@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模版语法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>插值语法</h1>
+        <h3>{{hello}} {{name}}</h3>
+        <!-- 横线 -->
+        <hr />
+        <h1>指令语法</h1>
+        <!-- v-bind：动态 表达式  读取变量 v-bind:可以用 ：代替
+        v-bind:href="xxx”或简写为：href="xxx"，xxx同样要写js表达式
+        且可以直接读取到data中的所有属性。  -->
+        <a v-bind:href="url.toUpperCase()" x="hello">点我去{{name}}家 去学习1</a>
+        <a :href="school.url" :x="hello">点我去{{school.name}}去学习2</a>
+        <a :href="Date.now()" :x="hello">当前时间戳</a>
+
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false
+//创建vue实例
+    new Vue({
+        el: '#root',
+        data: {
+            name: '北京',
+            school:{
+                name: '尚硅谷',
+                url:'http://www.google.com'
+            },
+            url:'http://www.baidu.com',
+            hello:"你好"
+        }
+    })
+
+</script>
+
+</html>

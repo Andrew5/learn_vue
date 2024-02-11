@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(69, 39, 114);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">123</div>
+    <div class="box">abc</div>
+    <div class="AAAAA">我是文字内容</div>
+    <p id = "nav">导航栏</p>
+    <ul>
+        <li>测试</li>
+        <li>标题</li>
+        <li>内容</li>
+        <li>结尾</li>
+        <li>结束</li>
+    </ul>
+
+    <ul class="navsub">
+        <li>我的首页</li>
+        <li>产品介绍</li>
+        <li>联系方式</li>
+    </ul>
+
+  <script>
+    // DOM（文档对象模型）、BOM（浏览器对象模型）
+    // JS -> WebAPIs-> BOM
+    // JS -> WebAPIs-> DOM  文档对象模型
+    // JS -> ECMAScript(JS语言基础)
+
+    // DOM操作网页内容，通过JS动态更新HTML文档中的标签元素
+
+    // div DOM对象 
+    // docment 文档对象
+    // 浏览器html自动生成
+
+    // 获取DOM对象
+    // 获取匹配的第一个元素
+    // const box = document.querySelector('.box');
+    // console.log(box);
+
+    // const nav = document.querySelector('#nav');
+    // nav.style.color = 'reg'
+    // console.log(nav);
+
+    // 获取第一个li
+    // const li = document.querySelector('ul li');
+    // const li = document.querySelector('ul li:first-child');
+    // const li = document.querySelector('ul li:nth-child(2)');
+    // const li = document.querySelector('ul li:nth-child(3)')
+    // console.log(li)
+    // 获取所有
+    // const lis = document.querySelectorAll('ul li');
+    // console.log(lis);
+    // 返回值： 对象
+
+    // 获取ul的class
+    // const ulnav = document.querySelector('ul')
+    // 获取ul class="navsub"的第二个DOM对象
+    const ulnav = document.querySelector('ul.navsub li:nth-child(2)')
+    ulnav.style.color = 'green'
+    ulnav.style.backgroundColor = 'red'
+    console.log(ulnav);
+    // 获取navsub的所有DOM元素
+    const ullist = document.querySelectorAll('ul.navsub li')
+    for (let i = 0;i < ullist.length;i++) {
+        console.log("打印所有元素:" + ullist[i]);
+    }
+    // 得到的是伪数组 但是没有索引号 不能追加等数组方法
+
+    const p = document.querySelectorAll('#nav')
+    console.log(p);
+    p[0].style.color = 'green'
+
+
+    
+    // 1.通过id获取
+    const getEId = document.getElementById('nav');
+    console.log(getEId);
+    // 2.通过标签名获取
+    const getTagName = document.getElementsByTagName('div');
+    console.log(getTagName);
+    // 3.通过类名获取
+    const getClassName = document.getElementsByClassName('ul.navsub');
+    console.log(getClassName);
+
+    // 4.通过选择器获取
+    // 5.通过层级关系获取
+    // 6.通过事件获取
+    // 7.通过节点关系获取
+    // 8.通过父节点获取
+    // 9.通过子节点获取
+    // 10.通过兄弟节点获取
+    // 11.通过节点索引获取
+    // 12.通过节点类名获取
+    // 13.通过节点属性获取
+    // 14.通过节点文本获取
+    // 15.通过节点节点值获取
+    // 16.通过节点节点类型获取
+
+    // 操作元素内容
+    const boxAAAAA = document.querySelector('.AAAAA')
+    console.log(boxAAAAA);
+    // 修改文字内容
+    console.log(boxAAAAA.innerText);// 获取文字内容
+    boxAAAAA.innerText = '修改文字内容'
+    boxAAAAA.innerHTML = '<strong>我要更换</strong>'
+    boxAAAAA.innerHTML = '<a href="http://www.baidu.com">百度</a>'
+    // boxAAAAA.innerHTML = '<a href="http://www.baidu.com"><strong>百度</strong></a>'
+    // 行内样式表权重高
+
+
+  </script>  
+
+</body>
+</html>

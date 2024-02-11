@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据绑定</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        单向数据绑定：<input type="text" :value="name"><br />
+        双向数据绑定：<input type="text" v-model:value="name"><br />
+        <h2 v-bind:x="name">你好啊</h2>
+        <!-- 如下代码是错误的 -->
+        <!-- <h2 v-model:x="name">你好啊</h2> -->
+        <!-- 数据绑定方式：1、单向绑定(v-bind):数据从data流向页面
+        2、双向绑定(v-model):数据不仅能从data流向页面 还可以从页面流向data（表单元素使用，如input、select），简写为v-model,默认收集的是value的数据 -->
+        <h2>简写</h2>
+        <br />
+        <p>测试多图
+            <img src="http://demo.sucainiu.com/2018/5913/i/eg_tulip.jpg" alt="上海鲜花港 - 郁金香">
+            <img src="https://www.cnstock.com/image/202308/14/20230814214429748.jpg" style="max-width: 100px; height: auto;" alt="测试">
+            <img src="https://static.cnstock.com/img/news/app-img-detail-l.png" style="max-width: 100px; height: auto;" alt="不错">
+        </p>
+        单向数据绑定：<input type="text" :value="name"><br />
+        双向数据绑定：<input type="text" v-model="name"><br />
+    </div>
+</body>
+
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    //创建vue实例
+    new Vue({
+        el: '#root',
+        data: {
+            name: '北京',
+            school: {
+                name: '尚硅谷',
+                url: 'http://www.google.com'
+            },
+            url: 'http://www.baidu.com',
+            hello: "你好"
+        }
+    })
+
+</script>
+
+</html>

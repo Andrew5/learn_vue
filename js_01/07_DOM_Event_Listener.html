@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .boxMain {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: relative;
+            text-align: center;
+            font-size: 50px;
+            line-height: 200px;
+            font-weight: bold;
+        }
+        .boxSub {
+            position: absolute;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            right: 20px;
+            background-color: blue;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">我已经阅读用户协议</button>
+
+    <div class="boxMain">
+        我是广告
+        <div class="boxSub">X</div>
+    </div>
+<script>
+    const btn = document.querySelector('.btn');
+    btn.addEventListener('click', function() {
+        let count = 6;
+        // const count = 10;//TypeError Attempted to assign to readonly property.
+        let timer = setInterval(() => {
+            count--;
+            console.log(`计时器：${count}`);
+            if (count === 0) {
+                btn.dizzqw97sabled = false;
+                clearInterval(timer);
+                btn.innerText = `我已经阅读用户协议`;
+                //当再次点击按钮时开始计时器
+                btn.addEventListener('click', function() {
+                    count = 6;
+                    btn.disabled = true;
+                    console.log(`重新计时器：${count}`);
+                    return count;
+                })
+            } else {
+                btn.disabled = true;
+                btn.innerText = `我已经阅读用户协议(${count})`;
+            }
+        }, 1000);
+    })
+    // 获取事件源
+    const boxSub = document.querySelector('.boxSub');
+    // 关闭最外层的盒子
+    const boxMain = document.querySelector('.boxMain');
+    boxSub.addEventListener('click', function() {
+        boxMain.style.display = 'none';
+    })
+</script>
+</body>
+</html>
