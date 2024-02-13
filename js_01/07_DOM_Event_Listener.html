@@ -61,11 +61,12 @@
             }
         }, 1000);
     })
-    
+
     // 获取事件源
     const boxSub = document.querySelector('.boxSub');
     // 关闭最外层的盒子
     const boxMain = document.querySelector('.boxMain');
+    // 事件类型：click
     boxSub.addEventListener('click', function() {
         boxMain.style.display = 'none';
     })

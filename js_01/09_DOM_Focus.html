@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .mi {
+            width: 240px;
+            margin: 100px auto;
+            position: relative;
+            /* transition: all 0.5s; */
+        }
+
+        .mi input {
+            width: 240px;
+            height: 30px;
+            outline: none;
+            border: 1px solid #ccc;
+            padding: 0 10px;
+            font-size: 14px;
+            line-height: 48px;
+            border: 1px solid #ebebeb;
+            transition: all 0.5s;
+        }
+        /* 伪类选择器配合transition使用 */
+        .mi input:focus {
+            width: 300px;
+        }
+
+        /* .mi img {
+            position: absolute;
+            top: 8px;
+            left: 10px;
+        } */
+        .mi .search {
+            border: 1px solid rgb(246, 5, 170);
+            transition: all 0.5s;
+        }
+
+        .result-list {
+            position: absolute;
+            left: 0;
+            top: 30px;
+            width: 223px;
+            border: 1px solid #ebebeb;
+            border-top: #ccc;
+            background: #fff;
+        }
+
+        .result-list a {
+            display: block;
+            padding: 6px 15px;
+            font-size: 12px;
+            color: red;
+            text-decoration: none;
+            /* position: absolute;
+            left: 0;
+            top: 48px;
+            width: 223px;
+            border: 1px solid #ebebeb;
+            border-top: #ccc;
+            background: #fff; */
+        }
+
+        .result-list a:hover {
+            background-color: orange;
+        }
+    </style>
+</body>
+<div class="mi">
+    <input type="search" placeholder="小米笔记本">
+    <ul class="result-list">
+        <li><a href="#">全部商品</a></li>
+        <li><a href="#">小米11</a></li>
+        <li><a href="#">小米21</a></li>
+        <li><a href="#">小米13</a></li>
+        <li><a href="#">小米14</a></li>
+        <li><a href="#">小米15</a></li>
+        <li><a href="#">小米16</a></li>
+        <li><a href="#">小米17</a></li>
+    </ul>
+</div>
+<script>
+    // 属性选择器
+    // 获取多个input元素
+    const input = document.querySelector(`[type=search]`);
+    const ul = document.querySelector(`.result-list`);
+    input.addEventListener('keydown', function (e) {
+        console.log(`键盘按下+${e.key}`);
+    })
+    input.addEventListener('keyup', function (e) {
+        console.log(`键盘抬起`);
+        if (e.key === 'Enter'){
+            console.log('我按下了回车键');
+            ul.style.display = 'block';
+            // trim() 方法用于删除字符串的头尾空格。
+            console.log(`我输入了：${input.value.trim()}`);
+        }
+    })
+    console.log(input);
+    // 获取焦点
+    input.addEventListener('focus', function () {
+        // ul显示
+        ul.style.display = 'block';
+        // 添加一个带有颜色边框的类名
+        input.classList.add('search');
+    })
+    //失去焦点
+    input.addEventListener('blur', function () {
+        ul.style.display = 'none';
+        input.classList.remove('search');
+    })
+    // 输入内容
+    input.addEventListener('input', function (e) {
+        console.log(input.value);
+        if (input.value.trim() ==``) {
+            console.log("空格");
+        }
+        // ul.innerHTML = input.value;
+        if (input.value.length > 100) {
+            // 移除多余的字符  
+            input.value = input.value.slice(0, 10);
+            // 阻止事件的默认行为（可选）  
+            event.preventDefault();
+            console.log(`禁止输入+${e}`);
+
+            return;
+        }
+    })
+    input.addEventListener("mouseenter", function () {
+            console.log("鼠标滑过");
+    })
+
+
+
+</script>
+
+</html>

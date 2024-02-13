@@ -45,6 +45,15 @@
             height: 35px;
             margin: 0 50px;
         }
+        .boxmain {
+            width: 120px;
+            height: 120px;
+            background-color: #da0d0d;
+            border-top-left-radius: 60px;
+            top: 10px;
+            left: 10px;
+            position: absolute
+        }
     </style>
 </head>
 
@@ -58,7 +67,12 @@
         <button class="start">开始</button>
         <button class="end">结束</button>
     </div>
-
+    <div class="boxmain">
+        <!-- <div style="position: absolute; left: 10px; top: 10px;">
+            boxmain
+          </div> -->
+          
+    </div>
     <script>
         const arr = ["马超", "黄忠", "赵云", "张飞", "关羽"];
         // 获取按钮
@@ -90,6 +104,7 @@
             }, 35);
         })
         // 关闭定时器
+        // 鼠标点击
         end.addEventListener("click", function () {
             clearInterval(timerid);
             timerid = 0;
@@ -99,6 +114,29 @@
             }
             console.log(arr);
         })
+
+        const boxMain = document.querySelector(".boxmain");
+        // 鼠标滑过
+        boxMain.addEventListener("mouseenter", function () {
+            console.log("鼠标滑过");
+        })
+        boxMain.addEventListener("mouseleave", function () {
+            console.log("鼠标离开");
+        })
+        // 鼠标的其他事件
+        // 鼠标按下
+        boxMain.addEventListener("mousedown", function () {
+            console.log("鼠标按下");
+        })
+        // 鼠标抬起
+        boxMain.addEventListener("mouseup", function () {
+            console.log("鼠标抬起");
+        })
+        // 鼠标移动
+        boxMain.addEventListener("mousemove", function () {
+            console.log("鼠标移动");
+        })
+        
     </script>
 </body>
 
