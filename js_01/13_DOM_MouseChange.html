@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dad{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+            position: relative;
+        }
+        .bady{
+            width: 100px;
+            height: 100px;
+            background-color: #ff0000;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dad">
+        <div class="bady"></div>
+    </div>
+    <script>
+        const dad = document.querySelector('.dad');
+        const bady = document.querySelector('.bady');
+
+        // 事件会有冒泡效果
+        dad.addEventListener
+        ('mouseover',function(e){
+            console.log('mouseover鼠标移入来了');
+        })
+        // 事件会有冒泡效果
+        dad.addEventListener
+        ('mouseout',function(e){
+            console.log('mouseout鼠标移出去了');
+        })
+        // 事件没有冒泡效果
+        bady.addEventListener
+        ('mouseenter',function(e){
+            console.log('mouseenter鼠标移入了');
+        })
+        // 事件没有冒泡效果
+        bady.addEventListener
+        ('mouseleave',function(e){
+            console.log('mouseleave鼠标移出去了');
+        })
+        // 事件没有冒泡效果
+        bady.addEventListener
+        ('mousemove',function(e){
+            console.log('mousemove鼠标移动来了');
+        })
+    </script>
+</body>
+</html>

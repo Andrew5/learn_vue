@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { height: 3000px; }
+        div { 
+            display: none;
+            margin-top: 100px;
+            overflow: scroll;
+            height: 200px; 
+            width: 100px;
+            border: 1px solid #3508b1;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        注意：此方法仅适用于现代浏览器，对于IE8及以下版本浏览器不支持
+        注意：此方法仅适用于现代浏览器，对于IE8及以下版本浏览器不支持
+        注意：此方法仅适用于现代浏览器，对于IE8及以下版本浏览器不支持
+        注意：此方法仅适用于现代浏览器，对于IE8及以下版本浏览器不支持
+        注意：此方法仅适用于现代浏览器，对于IE8及以下版本浏览器不支持
+    </div>
+    <script>
+        // 给window或document添加滚动条滚动事件
+        // 注意：此方法仅适用于现代浏览器，对于IE8及以下版本浏览器不支持
+        // 可以监听某个元素的内部滚动直接给某个元素加
+        window.addEventListener
+        ('scroll', function(e){
+            console.log('滚动条位置：', window.scrollY,document.documentElement.scrollTop);
+            console.log(`滚动条实时位置： + ${document.documentElement.scrollTop}`);
+            // 内容+padd+mar
+            console.log(`滚动条实时位置： + ${document.documentElement.offsetWidth}+wei+${document.documentElement.offsetHeight}`);
+
+            const n = document.documentElement.scrollTop;
+            if (n>=100){
+                div.style.display = 'block';
+                div.style.opacity = 10;
+                // div.style.transform = `transform(${e.target.offsetHLeft}px)`
+            }else{
+                div.style.display = 'none';
+            }
+
+        })
+
+        const div = document.querySelector('div');
+        div.addEventListener('scroll', function(e){
+            console.log('滚动条位置：', div.scrollTop);
+        })
+    </script>
+</body>
+</html>

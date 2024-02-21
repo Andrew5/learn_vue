@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th class="allCheck">
+                <input type="checkbox" name="" id="checkAll"> <span class="all">全选</span>
+            </th>
+            <th>商品</th>
+            <th>商家</th>
+            <th>价格</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="check" class="ck">
+            </td>
+            <td>小米手机</td>
+            <td>小米</td>
+            <td>Y1999</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="check" class="ck">
+            </td>
+            <td>小米净化器</td>
+            <td>小米</td>
+            <td>Y4999</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" name="check" class="ck">
+            </td>
+            <td>小米电视</td>
+            <td>小米</td>
+            <td>Y5999</td>
+        </tr>
+    </table>
+    <script>
+        // 1.全选和取消全选做法：  让下面所有复选框的checked属性（选中状态） 跟随 全选按钮即可
+        // 获取大复选框元素
+        const checkAll = document.querySelector('#checkAll'); // 全选按钮
+        const cks = document.querySelectorAll('.ck'); // 下面所有复选框
+        checkAll.addEventListener('click',function() {
+            console.log(this.checked);// 得到的是true false
+            // 便利所有的小复选框 checked= 大复选框checked
+            for (let i = 0; i < cks.length; i++) {
+                cks[i].checked = this.checked;
+            }
+        })
+        // 小复选框控制大复选框
+        for (let i = 0; i < cks.length; i++) {
+            cks[i].addEventListener('click',function() {
+                console.log(document.querySelectorAll('.ck:checked').length);
+                // 每次点击小复选框的时候，都要循环查看下面所有的小复选框是否有没选中的
+                // 只要有一个没选中的，全选按钮就不选中
+                let flag = true;
+                for (let i = 0; i < cks.length; i++) {
+                    if(!cks[i].checked){
+                        flag = false;
+                        break;
+                    }
+                }
+                checkAll.checked = flag;
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .childul{
+            cursor: pointer;
+            width: 100px;
+            height: auto;
+            background-color: #ff0000;
+            /* 绝对定位或者相对定位的祖先元素 */
+            /* position: absolute; */
+            /* position: relative; */
+            /* margin-top: 10px; */
+            left: 0px;
+            top: 0px;
+        }
+    </style>
+    <ul class="childul">
+        <li>第1个孩子</li>
+        <li>第2个孩子</li>
+        <li>第3个孩子</li>
+        <li>第4个孩子</li>
+        <li>第5个孩子</li>
+        <p>我不需要变色</p>
+    </ul>
+    <script>
+        // 点击每个li 当前li 文字变为红色
+        const ul = document.querySelector('.childul');
+        
+        ul.addEventListener('click', function(e) {
+            // e.target.style.color = 'yellow';
+            console.log(e);
+            // 事件委托
+            // 事件对象.target.tagName
+            if (e.target.tagName.toLowerCase() === 'li') {
+                e.target.style.color = 'yellow';
+            }
+        })
+    </script>
+</body>
+</html>

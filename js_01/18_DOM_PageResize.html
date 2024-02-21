@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: inline-block;
+            /* width: 200px; */
+            height: 200px;
+            background-color: red;
+            padding: 10px;
+            border:10px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div>测试9999999999999999999999999999999</div>
+    <script>
+        // 立即执行函数 匿名函数（没有名称的函数）
+        (function(){}())
+        window.addEventListener(`resize`,function(){
+            console.log(`窗口大小变化了`);
+            // 获取可见部分宽高(不包含边框、margin、滚动条)
+            const w = document.documentElement.clientWidth
+            const h = document.documentElement.clientHeight
+            const e = document.documentElement.getBoundingClientRect()
+            const v = document.documentElement.scrollTop()
+
+            console.log(`获取的宽是:${w},获取的高是:${h}`);
+            console.log(`获取元素的大小以及对于视口的位置:${e}`);
+            console.log(document.querySelector(`xtx_goods_${e.target. dataset.name}`).offsetTop)
+        })
+
+        const div = document.querySelector(`div`)
+        console.log(`0获取的宽是:${div.clientWidth},0获取的高是:${div.clientHeight}`);
+        console.log(`0获取的宽是:${div.offsetWidth},0获取的高是:${div.offsetHeight}`);
+    </script>
+</body>
+</html>
