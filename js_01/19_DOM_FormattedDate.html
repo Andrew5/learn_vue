@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        1、static（默认值）：元素按照正常的文档流进行定位，即元素的位置由其在HTML文档中的位置决定，不受任何定位属性的影响。
+        
+        2、relative（相对定位）：元素相对于其正常位置进行定位。设置 top、right、bottom 和 left 属性会使元素相对于其正常位置移动。例如，top: 10px 会将元素向下移动10像素，相对于它原来在文档流中的位置。
+        
+        3、absolute（绝对定位）：元素相对于最近的已定位祖先元素（即设置了 position 属性为 absolute、relative、fixed 或 sticky 的元素）进行定位。如果没有已定位的祖先元素，那么它会相对于初始包含块（通常是视口）进行定位。绝对定位的元素会脱离正常的文档流，不再占用原来的空间。
+    
+        4、fixed（固定定位）：元素相对于浏览器窗口进行定位，即使页面滚动，它也始终位于同一的位置。固定定位的元素会脱离正常的文档流，不再占用原来的空间。
+
+        5、sticky（粘性定位）：这是相对定位和固定定位的混合类型。元素在跨越特定滚动阈值之前为相对定位，之后为固定定位。例如，一个元素设置 position: sticky; top: 10px; 会在元素在视口中向上滚动超过10像素之前保持其正常位置，之后则会像固定定位一样固定在顶部。
+
+        6、每个定位类型都有其特定的使用场景。例如，相对定位常用于微调元素位置，而绝对定位和固定定位则常用于创建复杂的布局和固定位置的元素（如导航栏、回到顶部按钮等）。
+
+        7、请注意，当元素设置为 position: absolute; 或 position: fixed; 时，它们的位置完全由 top、right、bottom 和 left 属性决定，而不再受文档流中其他元素的影响。同时，它们的 z-index 属性也会生效，可以用来控制元素在垂直堆叠顺序中的位置。
+        */
+
+        /*
+        position: relative  相对定位 类似swift中的bounds元素框偏移某个距离。元素扔保持其未定位前的形状，它原来所占的空间扔保留。
+
+        position: absolute 绝对定位 类似swift中的frame绝对定位的元素的位置相对于最近的已定位祖先元素，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块
+
+        postition: fixed 元素框的表现类似于将position 设置为absolute，不过其包含块是视窗本身。
+
+        absolute和fixed的明显区别在于：absolute属性设置的值是相对于其文档的绝对位置，而fixed属性设置的值是相对于屏幕视窗的绝对位置。
+        */
+        .time {
+            /* display: inline-block; */
+            /* 定位上下文（即，没有元素设置了 position: relative;、position: absolute; 或 position: fixed;） */
+            /* position: relative; */
+            width: 150px;
+            height: 30px;
+            text-align: center;
+            background-color: red;
+            /* margin-left: 20px; */
+            line-height: 30px;
+            /* left: 20px; */
+            margin-top: 10px;
+            /* 距离顶部 10px */
+        }
+
+        .button {
+            /* display: inline-block;   */
+            width: auto;
+            height: 30px;
+            background-color: red;
+            line-height: 30px;
+            margin-left: 0px;
+            margin-top: 10px;
+            /* 距离上一个元素（time）的底部 10px */
+        }
+
+        .countdown {
+            /* 一行内显示 */
+            /* 这不是必需的，因为默认情况下 div 就是块级元素，宽度会自动适应内容 */
+            font-size: 12px;
+            height: 30px;
+            width: 250px;
+            background-color: red;
+            line-height: 30px;
+            margin-top: 20px;
+            /* display: inline-block; 或者 block，根据需要选择   */
+            padding-left: 10px;
+            /* 根据需要添加内边距 */
+            padding-right: 10px;
+            /* 根据需要添加内边距 */
+            box-sizing: border-box;
+            /* 确保 padding 和 border 不会增加元素的总宽度 */
+            overflow: hidden;
+            white-space: nowrap; /* 防止文本折行 */  
+            text-overflow: ellipsis; /* 在文本溢出时显示省略号 */  
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 在 HTML 中，您需要确保这些元素按照正确的顺序排列，以便 margin-top 属性能够正确应用： -->
+    <div class="time"></div>
+
+    <button class="stopTimer">停止计时</button>
+
+    <div class="countdown"></div>
+
+    <script>
+        const div = document.querySelector('.time');
+        const countdownDiv = document.querySelector('.countdown');
+
+        div.innerHTML = getyMyDate();
+
+        console.log(`转换后的当前时间1：${+new Date().getTime()}`);
+        console.log(`转换后的当前时间2：${new Date()}`);
+        console.log(`转换后的当前时间3：${Date.now()}`);
+
+        // const date2 = new Date();
+        // div.innerHTML = date2.toLocaleString(); 
+        // div.innerHTML = date2.toLocaleTimeString(); 
+
+        function startTimer() {
+            const n = setInterval(function () {
+                div.innerHTML = getyMyDate();
+                // div.innerHTML = new Date().toLocaleString();
+            }, 1000);
+            return n;
+        }
+
+        function stopTimer() {
+            clearInterval(n);
+            console.log("计时停止");
+        }
+
+        const button = document.querySelector('button');
+        button.addEventListener('click', function () {
+            stopTimer();
+        })
+
+        // 默认开始
+        const n = startTimer();
+
+        function getyMyDate() {
+            const date = new Date();
+            console.log(date);
+            const date1 = new Date('2023-04-01');
+            console.log(date1);
+            // 因为 getYear() 方法返回的是1900年以来的年份数减去1900。
+            // 因此，2023年的年份数是2023-1900+1=124。
+            console.log(`当前年份：${date.getYear()}`);
+            // 获取当前年份，使用 getFullYear() 方法。
+            console.log(date.getFullYear());// 获取年份
+            console.log(date.getMonth() + 1);// 取值0～11 月份
+            console.log(date.getDate());//获取月份中的每一天
+            console.log(date.getDay());//0～6 星期几
+            console.log(date.getHours());//0～23
+            console.log(date.getMinutes());//0～59
+            console.log(date.getSeconds());//0～59
+            //综合
+            console.log(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`);//0～59
+            return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+        }
+
+        // 时间戳
+        console.log(Date.now());
+        countdownDiv.innerHTML = `距离清明节还有：`
+        setInterval(function () {
+            countdown()
+        }, 1000)
+        // 实现倒计时
+        function countdown() {
+            const endTime = new Date('2024-04-04').getTime();
+            const now = new Date().getTime();
+            console.log(`结束时间:${endTime}-现在时间:${now}`);
+            const timeLeft = endTime - now;
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            console.log(`${days}天 ${hours}小时 ${minutes}分钟 ${seconds}秒`);
+            // 更新倒计时显示
+            countdownDiv.innerHTML = `距离清明节还有：${days}天 ${hours}小时 ${minutes}分 ${seconds}秒`
+            if (timeLeft < 0) {
+                clearInterval(timer);
+            }
+        }
+
+        const arr = [`星期天`, `星期一`, `星期二`, `星期三`, `星期四`, `星期五`, `星期六`]
+        console.log(`当前是周${arr[new Date().getDay()]}`);
+    </script>
+</body>
+
+</html>
