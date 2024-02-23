@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="yeye">
+        <div class="baba">
+            <div class="baby1"></div>
+            <div class="baby"></div>
+        </div>
+    </div>
+    <script>
+        const baby = document.querySelector('.baby');
+        console.log(baby);// (bady)
+        console.log(baby.parentNode);// 返回dom对象(baba)
+        console.log(baby.parentNode.parentNode);// 返回dom对象(yeye)
+
+        console.log(baby.parentElement);// 返回dom对象(baba)
+
+        const yeye = document.querySelector('.yeye');
+        console.log(yeye.childNodes);// 返回dom对象(baba)
+        // 下一个兄弟节点
+        console.log(`下一个+${yeye.nextElementSibling}`);// 返回dom对象(baba)
+        // 上一个兄弟节点
+        console.log(`上一个+${baby.previousElementSibling}`);// 返回dom对象(baba)
+
+        /*
+        const closeBtn = document.querySelector('.box1');
+        for (let i = 0; i < closeBtn.length; i++){
+            closeBtn[i].addEvetnListener('click',function(){
+                closeBtn[i].parentNode.style.display = 'none';
+            })
+            closeBtn[i].onclick = function(){
+            }
+        }
+        */
+        /* document -{
+            HTML -{
+                head -{
+                    title -{
+                        标签
+                    }
+                    style -{
+
+                    }
+                    meata -{
+                        content
+                    }
+                }
+                body -{
+                    h1 -{
+                        
+                    }
+                    a -{
+                        href
+                        链接名
+                    }
+                    div -{
+                        id
+                        class
+                        文本
+                    }
+                }
+            }
+        }
+        */
+    </script>
+</body>
+</html>
