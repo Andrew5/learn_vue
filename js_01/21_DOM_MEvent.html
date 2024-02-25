@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="./css/swiper-bundle.min.css">
     <style>
          div {
             width: 100px;
@@ -15,8 +15,8 @@
 
         .box {
             position: relative;
-            width: 800px;
-            height: 300px;
+            width: 300px;
+            height: 100px;
             background-color: blueviolet;
             margin: 10px auto;
         } 
@@ -62,32 +62,24 @@
 
 <body>
     <div class="box">
-        <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-backface-hidden">
-            <div class="swiper-wrapper" id="swiper-wrapper-ad0be59aceb109f6f" aria-live="polite">
-                <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 9" style="width: 248px;">
-                    Slide 1</div>
-                <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 9" style="width: 248px;">Slide
-                    2</div>
-                <div class="swiper-slide" role="group" aria-label="3 / 9" style="width: 248px;">Slide 3</div>
-                <div class="swiper-slide" role="group" aria-label="4 / 9" style="width: 248px;">Slide 4</div>
-                <div class="swiper-slide" role="group" aria-label="5 / 9" style="width: 248px;">Slide 5</div>
-                <div class="swiper-slide" role="group" aria-label="6 / 9" style="width: 248px;">Slide 6</div>
-                <div class="swiper-slide" role="group" aria-label="7 / 9" style="width: 248px;">Slide 7</div>
-                <div class="swiper-slide" role="group" aria-label="8 / 9" style="width: 248px;">Slide 8</div>
-                <div class="swiper-slide" role="group" aria-label="9 / 9" style="width: 248px;">Slide 9</div>
+        <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-css-mode">
+            <div class="swiper-wrapper" id="swiper-wrapper-4166635211fb6379" aria-live="polite">
+              <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 9" style="width: 130px;">Slide 1</div>
+              <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 9" style="width: 130px;">Slide 2</div>
+              <div class="swiper-slide" role="group" aria-label="3 / 9" style="width: 130px;">Slide 3</div>
+              <div class="swiper-slide" role="group" aria-label="4 / 9" style="width: 130px;">Slide 4</div>
+              <div class="swiper-slide" role="group" aria-label="5 / 9" style="width: 130px;">Slide 5</div>
+              <div class="swiper-slide" role="group" aria-label="6 / 9" style="width: 130px;">Slide 6</div>
+              <div class="swiper-slide" role="group" aria-label="7 / 9" style="width: 130px;">Slide 7</div>
+              <div class="swiper-slide" role="group" aria-label="8 / 9" style="width: 130px;">Slide 8</div>
+              <div class="swiper-slide" role="group" aria-label="9 / 9" style="width: 130px;">Slide 9</div>
             </div>
-            <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
-                aria-controls="swiper-wrapper-ad0be59aceb109f6f" aria-disabled="false"></div>
-            <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button"
-                aria-label="Previous slide" aria-controls="swiper-wrapper-ad0be59aceb109f6f" aria-disabled="true"></div>
-            <div class="swiper-pagination swiper-pagination-progressbar swiper-pagination-horizontal"><span
-                    class="swiper-pagination-progressbar-fill"
-                    style="transform: translate3d(0px, 0px, 0px) scaleX(0.111111) scaleY(1); transition-duration: 300ms;"></span>
-            </div>
-            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-        </div>
+            <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-4166635211fb6379" aria-disabled="false"></div>
+            <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-4166635211fb6379" aria-disabled="true"></div>
+            <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
     </div>
-    <script src="./js/swiper.min.js"></script>
+    <script src="./js/swiper-bundle.min.js"></script>
     <h1>新增学员</h1>
     <form class="info" autocomplete="off">
         <!-- <input type="text" class="age" name="age"> -->
