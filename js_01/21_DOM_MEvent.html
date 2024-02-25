@@ -7,19 +7,21 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/swiper-bundle.min.css">
     <style>
-         div {
+        div {
             width: 100px;
             height: 100px;
-            background-color: red;
+            background-color: rgb(244, 240, 240);
         }
 
         .box {
             position: relative;
-            width: 300px;
-            height: 100px;
+            width: auto;
+            height: 200px;
             background-color: blueviolet;
             margin: 10px auto;
-        } 
+            /* 使用简写属性添加红色边框线 */  
+            border: 1px solid red; 
+        }
 
         html,
         body {
@@ -44,6 +46,7 @@
 
         .swiper-slide {
             text-align: center;
+            color: aqua;
             font-size: 18px;
             background: #fff;
             display: flex;
@@ -64,20 +67,30 @@
     <div class="box">
         <div class="swiper mySwiper swiper-initialized swiper-horizontal swiper-css-mode">
             <div class="swiper-wrapper" id="swiper-wrapper-4166635211fb6379" aria-live="polite">
-              <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 9" style="width: 130px;">Slide 1</div>
-              <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 9" style="width: 130px;">Slide 2</div>
-              <div class="swiper-slide" role="group" aria-label="3 / 9" style="width: 130px;">Slide 3</div>
-              <div class="swiper-slide" role="group" aria-label="4 / 9" style="width: 130px;">Slide 4</div>
-              <div class="swiper-slide" role="group" aria-label="5 / 9" style="width: 130px;">Slide 5</div>
-              <div class="swiper-slide" role="group" aria-label="6 / 9" style="width: 130px;">Slide 6</div>
-              <div class="swiper-slide" role="group" aria-label="7 / 9" style="width: 130px;">Slide 7</div>
-              <div class="swiper-slide" role="group" aria-label="8 / 9" style="width: 130px;">Slide 8</div>
-              <div class="swiper-slide" role="group" aria-label="9 / 9" style="width: 130px;">Slide 9</div>
+                <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 9" style="width: 220px;">
+                    Slide 1</div>
+                <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 9" style="width: 220px;">Slide
+                    2</div>
+                <div class="swiper-slide" role="group" aria-label="3 / 9" style="width: 220px;">Slide 3</div>
+                <div class="swiper-slide" role="group" aria-label="4 / 9" style="width: 220px;">Slide 4</div>
+                <div class="swiper-slide" role="group" aria-label="5 / 9" style="width: 220px;">Slide 5</div>
+                <div class="swiper-slide" role="group" aria-label="6 / 9" style="width: 220px;">Slide 6</div>
+                <div class="swiper-slide" role="group" aria-label="7 / 9" style="width: 220px;">Slide 7</div>
+                <div class="swiper-slide" role="group" aria-label="8 / 9" style="width: 220px;">Slide 8</div>
+                <div class="swiper-slide" role="group" aria-label="9 / 9" style="width: 220px;">Slide 9</div>
             </div>
-            <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-4166635211fb6379" aria-disabled="false"></div>
-            <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-4166635211fb6379" aria-disabled="true"></div>
-            <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
-          <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+            <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
+                aria-controls="swiper-wrapper-4166635211fb6379" aria-disabled="false"></div>
+            <div class="swiper-button-prev swiper-button-disabled" tabindex="-1" role="button"
+                aria-label="Previous slide" aria-controls="swiper-wrapper-4166635211fb6379" aria-disabled="true"></div>
+            <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal"><span
+                    class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span><span
+                    class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span
+                    class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span
+                    class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span
+                    class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>
     </div>
     <script src="./js/swiper-bundle.min.js"></script>
     <h1>新增学员</h1>
@@ -98,18 +111,22 @@
         <button type="button" id="back">返回</button>
     </form>
     <script>
+console.log("%c 👽", "color: #00bcd4; font-size: 24px; font-weight: bold;");
 
-        var swiper = new Swiper(".mySwiper", {
-            pagination: {
-                el: ".swiper-pagination",
-                type: "progressbar",
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-
+    var swiper = new Swiper(".mySwiper", {
+      cssMode: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        // type: "progressbar",
+      },
+      mousewheel: true,
+      keyboard: true,
+    });
+  
         const div = document.querySelector('div');
         // 触摸
         div.addEventListener('touchstart', function (e) {
