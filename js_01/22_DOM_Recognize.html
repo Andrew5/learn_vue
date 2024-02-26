@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生信息管理</title>
+</head>
+
+<body>
+    <!-- required属性是一个布尔属性，意味着它不需要值。如果元素包含此属性，它将成为表单提交的必要字段 -->
+    <h1>新增学员</h1>
+    <form class="info" autocomplete="off" action="">
+        姓名：
+        <input type="text" name="uname" class="uname" id="uname" required>
+        年龄：
+        <input type="number" name="age" class="age" id="age" required>
+        性别：
+        <select name="gender" class="gender" id="gender">
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+        <!-- 班级：
+        <input type="text" name="class" id="class" required> -->
+        薪资：
+        <input type="number" name="salary" class="salary" id="salary" required>
+        就业城市：
+        <select name="city" class="city" id="city">
+            <option value="北京">北京</option>
+            <option value="上海">上海</option>
+            <option value="广州">广州</option>
+            <option value="深圳">深圳</option>
+            <option value="曹县">曹县</option>
+        </select>
+        <button class="add">录入</button>
+    </form>
+    <h1>就业学生信息表</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>薪资</th>
+                <th>就业城市</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>1001</td>
+            <td>欧阳八天</td>
+            <td>19</td>
+            <td>男</td>
+            <td>15000</td>
+            <td>上海</td>
+            <td>
+                <a href="javascript:">删除</a>
+            </td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script>
+        const arr = []
+        //获取元素
+        const uname = document.querySelector('.uname');
+        const add = document.querySelector('.add');
+        const age = document.querySelector('.age');
+        const gender = document.querySelector('.gender');
+        const salary = document.querySelector('.salary');
+        const city = document.querySelector('.city');
+        const info = document.querySelector('.info');
+
+        // 标签类型不需要加.
+        const tbody = document.querySelector('tbody');
+
+        // 获取带有name 属性元素 返回一个伪数组
+        // 伪数组 具有数组的基本特性 并且有length属性
+        const items = document.querySelectorAll('[name]');
+
+        info.addEventListener('submit', function (e) {
+            // 阻止默认行为 跳转
+            e.preventDefault();
+            console.log(`11+${e}`);
+            // 进行表单验证 如果不通过 直接中断 不需要添加数据
+            // if (!uname.value || !age.value || !gender.value || !salary.value || !city.value) {
+            //     return alert('请输入完整信息');;
+            // }
+            // 上下二者均可
+            // for (let i = 0; i < items.length; i++) {
+            //     if (items[i].value === '') {
+            //         return alert('请输入完整信息');
+            //     }
+            // }           
+            
+            // 创建新的对象
+            const obj = {
+                stuID: arr.length + 1,
+                uname: uname.value,
+                age: age.value,
+                gender: gender.value,
+                salary: salary.value,
+                city: city.value
+                // city:info.city.value
+            }
+            arr.push(obj)
+            // 清空 重置
+            this.reset()
+            // 调用渲染函数
+            render()
+            /*
+            function replacer(key, value) {  
+                if (typeof value === 'string') {  
+                    return undefined; // 忽略所有字符串类型的属性  
+                }  
+                return value;  
+            }  
+            const obj = { a: 1, b: '2', c: 3 };  // 可以排除
+            console.log(JSON.stringify(obj, replacer)); // 输出: {"a":1,"c":3}
+            */
+            console.log(`22+${JSON.stringify(obj, null, 5)}`);// 第三个参数：如果它是一个数字，它表示每个级别缩进的空格数。如果它是一个字符串（不超过10个字符），它会被用作缩进字符。如果省略该参数，则输出不会有额外的空格或换行。
+        })
+        // 渲染函数
+        function render() {
+            // 先清空tbody 以前的数据 把最新数组里面的数据渲染完毕
+            tbody.innerHTML = ''
+            //遍历arr数组
+            for (let i = 0; i < arr.length; i++) {
+                // 生成arr
+                const tr = document.createElement('tr')
+                tr.innerHTML = `
+                        <td>${arr[i].stuID}</td>
+                        <td>${arr[i].uname}</td>
+                        <td>${arr[i].age}</td>
+                        <td>${arr[i].gender}</td>
+                        <td>${arr[i].salary}</td>
+                        <td>${arr[i].city}</td>
+                        <td>
+                            <a href="javascript:" data-id=${i}>删除</a>
+                        </td>
+                    `
+                // 追加元素
+                tbody.appendChild(tr)
+            }
+        }
+        // 删除操作
+        // 事件委托
+        tbody.addEventListener('click', function (e) {
+            // 因为删除按钮是a标签
+            if (e.target.tagName === 'A') {
+                console.log(`删除的数据+${e.target.dataset.id}`);
+
+                // 删除数组对应的数据
+                arr.splice(e.target.dataset.id, 1)
+
+                // 区别：删除元素后，重新渲染数据，重新渲染数据后，删除的元素在数组中已经不存在了
+
+                // 删除元素
+                tbody.removeChild(e.target.parentNode.parentNode)
+                // 重新渲染数据
+                render()
+            }
+        })
+
+    </script>
+</body>
+
+</html>

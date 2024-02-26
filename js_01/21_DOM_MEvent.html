@@ -19,8 +19,8 @@
             height: 200px;
             background-color: blueviolet;
             margin: 10px auto;
-            /* 使用简写属性添加红色边框线 */  
-            border: 1px solid red; 
+            /* 使用简写属性添加红色边框线 */
+            border: 1px solid red;
         }
 
         html,
@@ -51,7 +51,7 @@
             background: #fff;
             display: flex;
             justify-content: center;
-            align-items: center;
+            /* align-items: center; */
         }
 
         .swiper-slide img {
@@ -59,6 +59,25 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .swiper-pagination {
+            opacity: .8;
+            height: 10px;
+            margin-top: 50px;
+            border: 1px solid rgb(21, 1, 11);
+        }
+
+        .swiper-button-next,.swiper-button-prev  {
+            background-color: transparent;
+        }
+        .swiper-pagination-bullet {
+            background: #6e1d1d;
+            opacity: .8;
+        }
+        .swiper-pagination-bullet-active {
+            background: #3b07e8;
+            opacity: .8; 
         }
     </style>
 </head>
@@ -111,22 +130,30 @@
         <button type="button" id="back">返回</button>
     </form>
     <script>
-console.log("%c 👽", "color: #00bcd4; font-size: 24px; font-weight: bold;");
+        console.log("%c 👽", "color: #00bcd4; font-size: 24px; font-weight: bold;");
+//打印swiper-pagination的父节点
+        console.dir(`打印父节点+ ${document.querySelector(".swiper-pagination").parentNode.innerHTML}`);
+        //打印swiper-pagination的父节点的父节点
+        console.dir(`父节点的父节点+${document.querySelector(".swiper-pagination").parentNode.parentNode.innerHTML}`);
+        var swiper = new Swiper(".mySwiper", {
+            cssMode: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                // type: "progressbar",
+            },
+            autoplay: {
+                delay: 3000,
+                stopOnLastSlide: false,
+                disableOnInteraction: true,
+            },
+            mousewheel: true,
+            keyboard: true,
+        });
 
-    var swiper = new Swiper(".mySwiper", {
-      cssMode: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        // type: "progressbar",
-      },
-      mousewheel: true,
-      keyboard: true,
-    });
-  
         const div = document.querySelector('div');
         // 触摸
         div.addEventListener('touchstart', function (e) {
