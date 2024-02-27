@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            left: 0;
+            bottom: 0;
+        }
+    </style>
+    <script>
+        // 检测userAgent中是否含有Android或者iPhone
+        !(function (doc, win) {
+            const userAgent = navigator.userAgent
+            // 验证是否为Android或iPhone
+            const android = userAgent.match(/Android);?[\s\/]+([\d.]+)?/)
+            const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/)
+            if (android || iphone) {
+                // locat ion.href = 'https://www.baidu.com'
+                console.log(`跳转`);
+            }   
+        })()
+        // 匿名函数
+        (function(){})()
+        !function(){}()
+        ~function(){}()
+        +function(){}()
+    </script>
+</head>
+
+<body>
+    <button>后退</button>
+    <button>前进</button>
+
+    <form action="">
+        <input type="text" name = "username">
+        <input type="password" name="pwd">
+        <button>提交</button>
+    </form>
+    <a href="#/my" class="testA">我的</a>
+    <a href="#/friend">关注</a>
+    <a href="#/download">下载</a>
+    <button class="reload">刷新</button>
+
+    <a href="https://www.baidu.com" class="searchtitle">百度搜索<span>5</span>秒钟内无响应之后跳置搜索</a>
+    <img src="./images/icbc.png" width="200" height="200" title="中国工商银行" alt="中国工商银行" id="icbc" name="icbc">
+    <script>
+        // 所有通过var定义在全局作用域中的变量、函数都会变成window对象的属性和方法
+        // 延迟函数 settimeout setTimeout仅仅只执行一次，所以可以理解为就是把一段代码延迟执行，平时省略window
+        // 定时器 setInterval
+        // 回调函数
+        // 立即执行函数
+        // 闭包
+        console.log(1);
+        const img = document.getElementById('icbc')
+        setTimeout(function (e) {
+            console.log('hello')
+            img.style.display = 'none'
+        }, 3000)
+        console.log(2);
+        // 两种定时器对比：执行的次数
+        // 延时函数：执行一次
+        // 间歇函数：每隔一段时间就执行一次，除非手动清除
+        /*
+        Javascript语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。 
+        这是因为Javascript这门脚本语言诞生的使命所致——Javascript是为处理页面中用户的交互，以及操作 DOM而诞生的。比如我们对某个DOM元素进行添加和删除操作，不能同时进行。
+        应该先进行添加，之后再删除。 
+        单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。这样所导致的问题是：如果JS执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉。
+        */
+        // Javascript事件循环
+        // 任务队列
+        // 宏任务：script(整体代码), setTimeout, setInterval, setImmediate(Node.js 环境), I/O
+        // 微任务：Promise.then(), process.nextTick(Node.js 环境)
+        // 浏览器环境下，任务队列又分为宏任务队列和微任务队列，并且每个宏任务队列中又包含若干个微任务队列
+        // 事件循环的顺序，决定了JavaScript代码的执行顺序。它从script(整体代码)开始执行，接下来执行所有的微任务
+        // 然后执行所有的宏任务，再执行所有的微任务，这样一直循环下去。
+        // 注意：浏览器环境下，微任务包括MutationObserver, Promise.then()和Object.observe()
+        // Node.js环境下，微任务包括process.nextTick, Promise.then()和async函数
+        // Javascript执行机制
+        // 1. 所有同步任务都在主线程上执行，形成一个执行栈
+        // 2. 主线程之外，还存在一个"任务队列"
+        // 3. 只要异步任务有了运行结果，就在"任务队列"之中放置一个事件
+        // 4. 一旦"执行栈"中的所有同步任务执行完毕，系统就会读取"任务队列"，看看里面有哪些事件。
+        // 那些对应的异步任务，于是结束等待状态，进入执行栈，开始执行。
+        // 主线程不断重复上面的第三步。
+        // 注意：主线程的执行过程是一个循环，我们称这种运行机制为Event Loop（事件循环）。
+        // 由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称为事件循环（eventloop）
+
+        // const a = document.querySelector('.searchtitle');
+        // var num = 5;
+        // let timerID = setInterval(function () {
+        //     console.log(`执行计时器`);
+        //     num--;
+        //     a.innerHTML = `百度搜索<span>${num}</span>秒钟内无响应之后跳置搜索`
+        //     if (num === 1) {
+        //         clearInterval(timerID)
+        //         location.href = `https://fanyi.baidu.com`
+        //     }
+        // }, 1000);
+
+        const reload = document.querySelector('.reload');
+        const testA = document.querySelector('.testA');
+        reload.addEventListener('click', function () {
+            // location.reload()
+            // 强制刷新
+            location.reload(true)
+            // reload方法用来刷新当前页面，传入参数true时表示强制刷新
+        })
+        testA.addEventListener('click', function (){
+            // location.href属性获取完整的URL地址，对其赋值时用于地址的跳转
+            // search属性获取地址中携带的参数，符号？后面部分
+            // hash属性获取地址中的啥希值，符号＃后面部分
+            console.log(`获取完整的URL地址 + ${location.href}`);
+            console.log(`获取地址中携带的参数 + ${location.search}`);
+            console.log(`获取地址中的啥希值 + ${location.hash}`);
+        })
+        
+        const back = document.querySelector('button:first-child');
+        const forward = back.nextElementSibling
+        back.addEventListener('click', function () {
+            history.back()
+        });
+        forward.addEventListener('click', function () {
+            history.forward()
+        });
+
+        
+    </script>
+</body>
+
+</html>

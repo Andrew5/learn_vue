@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // localStorage：可以将数据永久存储在本地（用户的电脑），除非手动删除，否则关闭页面也会存在
+        // 要存储一个名字
+        localStorage.setItem('name', '张三')
+        // 要存储一个年龄
+        localStorage.setItem('age', 18)
+        // 要存储一个性别
+        localStorage.setItem('gender', '男')
+        // 生命周期为关闭浏览器
+        sessionStorage.setItem('name', '李四')
+        sessionStorage.setItem('age', 20)
+        sessionStorage.setItem('gender', '女')
+
+
+        const obj = {
+            uname: `pink`,
+            age: 18,
+            gender: `女`,
+            city: `北京`
+        }
+        // 存
+        // localStorage.setItem('user', JSON.stringify(obj))
+
+        // 取
+        const data = localStorage.getItem('user')
+        console.log(`直接取数据为：${data}`)
+
+        // 1. 将一个JSON格式的字符串转换成一个JavaScript对象或数组
+        console.log(`parse方式获取数据为：${JSON.parse(data)}`)// 是一个对象的 JSON 字符串
+
+        // 包含原始 JSON 字符串的 JSON 字符串
+        console.log(`stringify方式获取数据为：${JSON.stringify(data)}`)
+        // 2. 将JavaScript对象或值转换为JSON格式的字符串
+        console.log(`stringify方式获取数据为：${JSON.stringify(JSON.parse(data))}`)
+
+        // 转换对象
+        // 确保 arr 是一个数组，即使 data 是一个对象的 JSON 字符串：
+        // 执行后者 将其转为数组
+        const arr = Array.isArray(JSON.parse(data)) ? JSON.parse(data) : [JSON.parse(data)];  
+        console.log(`对象:`, arr); // 使用逗号来分隔 "对象:" 和 arr，以便更清晰地查看输出  
+        // 使用map() 返回数组
+        const newArr = arr.map(function(ele, index){
+            // console.log(ele);
+            // console.log(index);
+            console.log(`我叫${ele.uname},今年${ele.age}岁,性别${ele.gender}居住在${ele.city}`);
+            return ele;
+        })
+
+
+        // 假设 data 是从 localStorage 中获取的对象的 JSON 字符串  
+        const data1 = '{"uname":"er","age":18,"gender":"女","city":"北京"}';  
+        // 解析 JSON 字符串为 JavaScript 对象  
+        const arr1 = JSON.parse(data);  
+        // 使用 Object.keys 和 forEach 遍历对象的属性并打印  
+        Object.keys(arr1).forEach(function(key) {  
+            console.log(`我叫${arr1[key].uname},今年${arr1[key].age}岁,性别${arr1[key].gender}居住在${arr1[key].city}`);  
+        });
+        console.log(`数组:${arr1}`);
+        // join 把数组转为字符串
+        console.log(`数组:${arr.join('')}`);
+        console.log(`数组:${arr.join('-')}`);
+        console.log(`数组:${arr.join('|')}`);
+
+    </script>
+</body>
+
+</html>

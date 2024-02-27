@@ -70,6 +70,7 @@
         const gender = document.querySelector('.gender');
         const salary = document.querySelector('.salary');
         const city = document.querySelector('.city');
+
         const info = document.querySelector('.info');
 
         // 标签类型不需要加.
@@ -95,8 +96,11 @@
             // }           
             
             // 创建新的对象
+            // 如果arr是空的，stuID将被设置为1。如果arr不是空的，但是最后一个元素没有stuID属性，那么stuID将被设置为1（因为0 + 1等于1）。如果arr不是空的，并且最后一个元素有stuID属性，那么stuID将被设置为该属性的值加1。
+            const stuID = arr.length === 0 ? 1 : (arr[arr.length - 1].stuID || 0) + 1;  
             const obj = {
-                stuID: arr.length + 1,
+                stuID: stuID,// 数组最后一条数据的stuID + 1
+                // stuID: arr[arr.length-1].stuID + 1,
                 uname: uname.value,
                 age: age.value,
                 gender: gender.value,
@@ -142,6 +146,7 @@
                     `
                 // 追加元素
                 tbody.appendChild(tr)
+                console.log(`ID是多晒：${arr[i].stuID}`);
             }
         }
         // 删除操作
