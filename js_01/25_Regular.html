@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            display: inline-block;
+            width: 250px;
+            height: 30px;
+            vertical-align: middle;
+            line-height: 30px;
+            padding-left: 15px;
+        }
+        .error{
+            color: rgb(249, 2, 2);
+            /* background:rgb(0, 221, 255); */
+
+        }
+        .right {
+            color: rgb(0, 255, 38);
+            /* background:rgb(4, 237, 179); */
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <span></span>
+    <script>
+        const regSub = /^[a-zA-Z0-9-_]{6,16}$/
+        const input = document.querySelector('input')
+        const span = document.querySelector('span')
+        // 失去焦点
+        input.addEventListener('blur', function (ele) {
+            if (regSub.test(this.value)){
+                // input.nextElementSibling.innerHTML = '输入正确'
+                span.innerHTML = '输入正确'
+                span.className = 'right'
+                // 存入数据
+                localStorage.setItem('user', this.value)
+                location.href = '19_DOM_FormattedDate.html'
+            } else {
+                // input.nextElementSibling.innerHTML = '输入错误'
+                span.innerHTML = '输入错误'
+                span.className = 'error'
+            }
+        })
+
+    </script>
+    <script>
+        // 2.正则表达式中的match方法有什么作用？
+        // 3.正则表达式中的replace方法有什么作用？
+        // 4.正则表达式中的split方法有什么作用？
+        // 5.正则表达式中的search方法有什么作用？
+        // 6.正则表达式中的test方法有什么作用？test方法用于判断是否有符合规则的字符串，返回的是布尔值找到返回true，否则false
+        // 7.正则表达式中的exec方法有什么作用？exec方法用于检索（查找）符合规则的字符串，找到返回数组，否则为null
+        // 8.正则表达式中的lastIndex属性有什么作用？
+        // 9.正则表达式中的global属性有什么作用？
+        // 10.正则表达式中的ignoreCase属性有什么作用？
+        // 11.正则表达式中的multiline属性有什么作用？
+        // 12.正则表达式中的dotAll属性有什么作用？
+        // 13.正则表达式中的flags属性有什么作用？
+        // 14.正则表达式中的source属性有什么作用？
+        // 15.正则表达式中的toString方法有什么作用？
+        // 16.正则表达式中的toLocaleString方法有什么作用？
+        // 17.正则表达式中的Symbol.match方法有什么作用？
+        // 18.正则表达式中的Symbol.replace方法有什么作用？
+        // 19.正则表达式中的Symbol.search方法有什么作用？
+        // 20.正则表达式中的Symbol.split方法有什么作用？
+        // 21.正则表达式中的Symbol.iterator方法有什么作用？
+        // 22.正则表达式中的Symbol.species方法有什么作用？
+        const str = 'hello world'
+        const reg = /o/g
+        console.log(reg.test(str));
+        console.log(str.match(reg))
+        console.log(str.match(reg).length)
+        console.log(reg.exec(str))
+
+        const str2 = '阿斯顿发发丝大舅喝咖啡就啊都是废话'
+        const reg2 = /咖啡/
+        console.log(str2.match(reg2));
+        console.log(reg2.test(str2));
+        console.log(reg2.exec(str2))
+
+        // 边界符号 ^:以谁开始 $:以谁结束
+        console.log(/^哈/.test('二哈'))//false
+        console.log(/^哈$/.test('哈'))//true
+        console.log(/^哈$/.test('哈哈'))//false 精确匹配
+        console.log(/^哈/.test('哈哈'))//true 模糊匹配
+        console.log(/哈$/.test('哈哈'))//false 精确匹配
+        console.log(/哈$/.test('二哈'))//true 模糊匹配
+        console.log(/哈/.test('二哈'))//true 模糊匹配
+        console.log(/哈/.test('哈哈'))//true 模糊匹配
+
+
+        // 量词符号 *:出现0次或多次 +:出现1次或多次 ?:出现0次或1次 {n}:出现n次 {n,m}:出现n到m次
+        console.log(/^哈$/.test('哈'))//true
+        console.log(/^哈*$/.test(''))//false
+        console.log(/^哈*$/.test('哈'))//true
+        console.log(/^哈*$/.test('哈哈'))//true
+        console.log(/^哈*$/.test('二哈很傻'))//false
+        console.log(/^哈*$/.test('哈很傻'))//false
+        console.log(/^哈*$/.test('哈很哈'))//false
+
+        console.log(/^哈+$/.test(''))//false
+        console.log(/^哈+$/.test('哈'))//true
+        console.log(/^哈+$/.test('哈哈'))//true
+        console.log(/^哈+$/.test('二哈很傻'))//false
+        console.log(/^哈+$/.test('哈很傻'))//false
+        console.log(/^哈+$/.test('哈很哈'))//false
+
+        console.log(/哈{1}/.test('哈'))//true
+        console.log(/哈{1}/.test('哈哈'))//false
+        console.log(/哈{1,2}/.test('哈'))//true
+        console.log(/哈{1,2}/.test('哈哈'))//true
+        console.log(/哈{1,2}/.test('哈哈哈哈哈'))//false
+        console.log(/哈{1,}/.test('哈'))//true
+        console.log(/哈{1,}/.test('哈哈哈哈哈'))//true
+        console.log(/哈{,2}/.test('哈'))//false
+        console.log(/哈{,2}/.test('哈哈'))//true
+        console.log(/哈{,2}/.test('哈哈哈哈哈'))//true
+        console.log(/哈{,}/.test('哈'))//true
+        console.log(/哈{,}/.test('哈哈哈哈哈'))//true
+
+        console.log(/^[abc]$/.test('a'))//true
+        console.log(/^[abc]$/.test('b'))//true
+        console.log(/^[abc]$/.test('c'))//true
+        console.log(/^[abc]$/.test('ab'))//false
+        console.log(/^[abc]{2}$/.test('ab'))//true
+
+        // i是单词ignore的缩写，正则匹配时字母不区分大小写
+        // g是单词global的缩写，匹配所有满足正则表达式的结果
+        console.log(/^java$/i.test('JAVA'))//true 不区分大小写
+        console.log(/^java$/.test('java'))//true 区分大小写
+
+        const str3 = 'java是一门编程语言艺术,JAVA工资很高'
+        const result = str3.replace(/java/ig,'iOS')
+        console.log(result)//java是一门编程语言艺术;
+
+        // 预定义类
+        /*
+        \d=[0-9] //匹配0-9之间的任一数字
+        \D=[^0-9] //匹配所有0-9以外的字符
+        \w=[a-zA-Z0-9_] //匹配人意字母、数字、下划线
+        \W=[^a-zA-Z0-9_] //除所有字母、数字和下划线以外的字符
+        \s=[ \t\r\n\v\f]  //匹配空格
+        \S=[^\s] //匹配非空字符串
+        日期格式：^\d{4}-\d{1,2}-\d{1,2}
+        */
+        console.log(/[0-9]/.test('哈'))//false // 
+        console.log(/[0-9]/.test('1'))//true
+        console.log(/[0-9a-zA-Z]/.test('哈'))//true
+        console.log(/[0-9a-zA-Z]/.test('哈1'))//true    
+        console.log(/[0-9a-zA-Z]/.test('哈12'))//true
+        console.log(/[0-9a-zA-Z_]/.test('哈12_'))//true
+        console.log(/^[1-9][0-9]{4,}$/.test('10000'))//false
+
+        // 范围类
+        console.log(/[a-z]/.test('哈'))//true
+        console.log(/[a-z]/.test('A'))//false
+        console.log(/[0-9a-zA-Z_]/.test('哈12_'))//true
+        console.log(/[0-9a-zA-Z_]/.test('哈12_哈'))//true
+        console.log(/[0-9a-zA-Z_]/.test('哈12_哈123'))//true
+        // 排除类
+        console.log(/[^0-9]/.test('哈'))//false
+        console.log(/[^0-9]/.test('哈1'))//true
+        console.log(/[^0-9a-zA-Z_]/.test('哈12_哈'))//false
+        console.log(/[^0-9a-zA-Z_]/.test('哈12_哈123'))
+        // 量词类
+        console.log(/哈{1,2}/.test('哈哈哈哈哈'))//true
+        console.log(/哈{1,2}/.test('哈'))//false
+        console.log(/哈{,2}/.test('哈哈'))//true
+
+
+        // ^：表示字符串的开始
+        // a-z A-Z 0-9 包含了英文字母、数字、
+        // 下划线和短横线等特殊符号写在最后面 
+        // 6到16位 这是一个数量词，表示前面的字符类（[a-zA-Z0-9-_]）可以出现6到16次
+        // $：表示字符串的结束
+        console.log(/^[a-zA-Z0-9-_]{6,16}$/.test('哈哈'))//true
+
+   /*
+   // 1.发送短信验证码模块
+   const code = document.querySelector('.code')
+   let flag = true
+   // 1.1点击事件
+   code. addEventListener('click',function() {
+        if (flag){
+            // 状态值取反 不能马上二次点击
+           flag = flag
+           let i = 5
+            //点击完毕之后立马触发
+            code.innerHTML = `0${i}秒后重新获取`
+            // 1.2开启定时器
+           let timerId = setInterval(function(){
+              i--
+              code.innerHTML = `0${i}秒后重新获取`
+            if(i === 0){
+              clearInterval(timerId)
+              code.innerHTML = `重新取取`
+              // 定时器结束
+              flag = true
+            } 
+          },1000)
+        }
+    })
+   */
+
+    </script>
+</body>
+</html>
