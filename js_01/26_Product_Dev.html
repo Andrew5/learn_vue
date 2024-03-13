@@ -437,6 +437,31 @@
     // 鼠标移入事件 显示隐藏 大盒子
     large.addEventListener('mouseenter', show)
     large.addEventListener('mouseleave', hide)
+
+    const layer = document.querySelector('.layer');
+    // 鼠标经过中等盒子 显示隐藏 黑色遮罩层
+    middle.addEventListener('mouseenter', function(){
+      layer.style.display = 'block';
+    })
+    middle.addEventListener('mouseleave', function(){
+      layer.style.display = 'none';
+    })
+    // 黑色遮罩层移动
+    middle.addEventListener('mousemove', function(e){
+      // console.log(e.pageX);// 鼠标在页面中的坐标
+      // console.log('DomTect'+middle.getBoundingClientRect().left,y=e.pageY)
+      let x = e.pageX - middle.getBoundingClientRect().left;
+      let y = e.pageY - middle.getBoundingClientRect().top - document.documentElement.scrollTop;
+      console.log(x,y);
+      
+      // 黑色遮罩层移动在middle盒子内 限定移动的距离
+      if (x >= 0&& x<=400&&y>=0 &&y<= 400){
+        layer.style.left = x + 'px';
+      layer.style.top = y + 'px';
+        
+      }
+    })
+
   </script>
 </body>
 
