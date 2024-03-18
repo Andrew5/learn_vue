@@ -404,10 +404,10 @@
     // 获取三个盒子元素
     const small = document.querySelector('.small');
     const middle = document.querySelector('.middle');
-    const large = document.querySelector('.large');
+    const large = document.querySelector('.large');// 400*400像素
     // 鼠标移入事件
     small.addEventListener('mouseover', function (e) {
-      if(e.target.tagName == 'IMG'){
+      if (e.target.tagName == 'IMG') {
         console.log('成功了');
         // 删除以前的
         this.querySelector('.active').classList.remove('active');
@@ -424,14 +424,14 @@
     middle.addEventListener('mouseenter', show)
     middle.addEventListener('mouseleave', hide)
     let timeid = 0
-    function show(){
+    function show() {
       clearTimeout(timeid)
       large.style.display = 'block'
     }
-    function hide(){
-      timeid = setTimeout(function(){
+    function hide() {
+      timeid = setTimeout(function () {
         large.style.display = 'none'
-      },200)
+      }, 200)
     }
 
     // 鼠标移入事件 显示隐藏 大盒子
@@ -440,25 +440,38 @@
 
     const layer = document.querySelector('.layer');
     // 鼠标经过中等盒子 显示隐藏 黑色遮罩层
-    middle.addEventListener('mouseenter', function(){
+    middle.addEventListener('mouseenter', function () {
       layer.style.display = 'block';
     })
-    middle.addEventListener('mouseleave', function(){
+    middle.addEventListener('mouseleave', function () {
       layer.style.display = 'none';
     })
     // 黑色遮罩层移动
-    middle.addEventListener('mousemove', function(e){
+    middle.addEventListener('mousemove', function (e) {
       // console.log(e.pageX);// 鼠标在页面中的坐标
       // console.log('DomTect'+middle.getBoundingClientRect().left,y=e.pageY)
       let x = e.pageX - middle.getBoundingClientRect().left;
       let y = e.pageY - middle.getBoundingClientRect().top - document.documentElement.scrollTop;
-      console.log(x,y);
-      
+      console.log(x, y);
+
       // 黑色遮罩层移动在middle盒子内 限定移动的距离
-      if (x >= 0&& x<=400&&y>=0 &&y<= 400){
-        layer.style.left = x + 'px';
-      layer.style.top = y + 'px';
-        
+      if (x >= 0 && x <= 400 && y >= 0 && y <= 400) {
+        // 黑盒子不是一直移动的
+        // 声明两个变量 黑色盒子移动到mx my变量
+        let mx = 0, my = 0
+        if (x < 100) mx = 0
+        if (x > 100 && x <= 300) mx = x - 100
+        if (x > 300) mx = 200// 鼠标移动距离大于300的时候正好是黑盒子的一半
+
+        if (y < 100) my = 0
+        if (y > 100 && y <= 300) my = y - 100
+        if (y > 300) my = 200
+        layer.style.left = mx + 'px';
+        layer.style.top = my + 'px';
+
+        // 大盒子的背景图片跟随 中等盒子移动 位置是相反方向移动
+        large.style.backgroundPositionX = -2 * mx + 'px';
+        large.style.backgroundPositionY = -2 * my + 'px';
       }
     })
 

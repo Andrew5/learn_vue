@@ -387,8 +387,18 @@ ul {
   clear: both;
 }
 
-.clearfix {
-  *zoom: 1;
+.clearfix {  
+    *zoom: 1;  
+}  
+  
+.clearfix:before,  
+.clearfix:after {  
+    content: "";  
+    display: table;  
+}  
+  
+.clearfix:after {  
+    clear: both;  
 }
 
 .wrapper {
