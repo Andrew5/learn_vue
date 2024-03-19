@@ -8,16 +8,27 @@
 <body>
     <script>
         // 箭头函数的主要特点是它们不绑定自己的 this 值，而是捕获其所在上下文的 this 值。它们也没有 arguments 对象，但你可以使用剩余参数（...args）来达到类似的效果
+        
         // 无参数的箭头函数
-        const sayHello = () => {  
-            console.log('Hello, world!');  
-        };  
-        sayHello(); // 输出: Hello, world!
+        const fn = (x) => {
+            console.log(x);
+        }
+        fn(1)
 
         // 单个参数的箭头函数
+        const fn2 = x => {
+            return x+x
+        }
+        console.log(fn2(1));
+        // 没有花括号和 return 关键字的箭头函数
+        const fn1 = (x) => console.log(`Hello, world!${x}`);
+
         const double = x => x * 2;  
         // double 是一个接受一个参数 x 的箭头函数，它返回 x 的两倍。调用 double(5) 会返回 10。
         console.log(double(5)); // 输出: 10
+        // 没有参数的箭头函数
+        const fn3 = x => x + x
+        console.log(fn3(1));
 
         // 多个参数的箭头函数
         const add = (a, b) => a + b; 
@@ -61,6 +72,24 @@
         const sumC = (initial, ...items) => items.reduce((accumulator, currentValue) => accumulator + currentValue, initial);  
         const result2 = sumC(1, 2, 3, 4, 5); // 传入五个参数，其中1是初始值  
         console.log(result2); // 输出: 15
+
+        //  阻止表单点击事件
+        const form = document.querySelector('form');
+        form.addEventListener('click', (e) => e.preventDefault());
+
+        // 箭头函数可以直接返回一个对象
+        const getTempItem = id => ({id, name:`Temp ${id}`});
+        /*
+        {  
+            id: 1,  
+            name: "Temp 1"  
+        }
+        */
+        getTempItem(1)
+
+        const object = (uname) => ({uname:uname})
+        object('刘德华')
+
     </script>
 </body>
 </html>
