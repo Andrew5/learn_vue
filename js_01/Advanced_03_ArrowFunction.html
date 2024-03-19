@@ -7,6 +7,7 @@
 </head>
 <body>
     <script>
+        console.log(this);
         // 箭头函数的主要特点是它们不绑定自己的 this 值，而是捕获其所在上下文的 this 值。它们也没有 arguments 对象，但你可以使用剩余参数（...args）来达到类似的效果
         
         // 无参数的箭头函数
@@ -89,7 +90,33 @@
 
         const object = (uname) => ({uname:uname})
         object('刘德华')
+        // 箭头函数内部没有this 没有windows
+        const obj = {
+            umane:'哈哈哈哈',
+            sayHi:()=>{
+                console.log(this);//this 指向window
+            }
+        }
+        obj.sayHi()
 
+        const obj1 = {
+            umane1:'哈哈哈哈',
+            sayHi1:function(){
+                let i = 10
+                const count = () => {
+                    console.log(this);//this obj1
+                }
+                count()
+                console.log(i,this);//this obj1
+            }
+        }
+        obj1.sayHi1()
+
+        const str = 'Hello World';
+        [1,2,3,4,5,6].map(function(item){
+            console.log(item);
+        })
+        
     </script>
 </body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 构造函数 初始化对象 快速创建多个类似的对象
+        function Pig(uname,age,gender){
+            this.name   =   uname;
+            this.age    =   age;
+            this.gender =   gender;
+        }
+        const pig1      =   new Pig('佩奇',6,'母');
+        const George    =   new Pig('乔治',7,'公');
+        pig1.name   =   '猪爸爸';
+        pig1.age    =   36; // 静态属性
+        Pig.sayHi = () => {
+            console.log('hello');
+            return 'hello';
+        }
+        Pig.haha = function(){ // 静态方法
+            console.log(this);
+        }
+        Pig.haha();
+
+        const Mum       =   new Pig('妈妈',36,'母');
+        console.log(pig1,George,Mum);
+        console.log(pig1 === George);
+
+        // new发生了什么事情 
+        // 1. 创建了一个空对象
+        // 2. this指向了这个空对象
+        // 3. 执行构造函数中的代码，给这个对象添加属性
+        // 4. 返回这个对象
+        
+
+        // 实例成员(属性和方法)写在谁身上
+            // 实例对象的属性和方法即为实例成员
+            // 实例对象相互独立 实例成员当前实例对象使用
+        // 静态成员(属性和方法)写在谁身上
+            // 构造函数的属性和方法即为静态成员
+            // 构造函数和实例对象都可以使用
+
+        // 内置构造函数
+        // Object Array String Number Boolean Function Date RegExp Error
+        // 内置构造函数的属性和方法都是静态的
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>        
+        // 对象const pig = {name:'佩奇',age:8,gender:'female'}
+        // 结构为变量:完成对象解构，并以此打印出值
+        const {name,age,gender} = pig;
+        console.log(name,age,gender);
+
+        // 请将pig对象中的name 通过对象解析的形式改为uname,并打印输出
+        const {name:uname} = pig;
+        console.log(uname);
+
+        const goods = [{
+            goodsName:"小米手机",
+            price: 1999,
+        }]
+        console.log(sumArray(goods));
+        // 请将数组对象，完成商品名和价格的解构
+        const [{goodsName,price}] = goods;
+        console.log(goodsName,price);
+
+        // 多级对象解构
+        const pig ={
+            username:'佩奇',
+            fameily:{
+                mother:'猪妈妈',
+                father:'猪爸爸',
+                brothers:['乔治','泰德','猪宝宝']   
+            },
+            age:6
+        }
+
+        const {username,fameily:{mother,father,brothers}} = pig;
+        console.log(username);
+        console.log(mother);
+        console.log(father);
+        console.log(brothers);
+
+        // 将data 改名为mydata
+        function render({data:mydata }){
+            console.log(mydata);
+        }
+        render({data:'hello'});
+        </script>
+</body>
+</html>

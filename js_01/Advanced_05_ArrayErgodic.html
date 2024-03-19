@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 数组常见实例方法
+
+        // foreach 遍历数组 不返回数组，经常用于查找遍历数组元素
+        // filter 过滤数组 返回新数组 返回的是筛选满足条件的数组元素
+        // map 迭代数组 返回新数组 返回的是处理之后的数组元素，想要使用返回的新数组
+        // reduce 累计器 返回累计处理的结果 经常用于求和
+            // arr.reduce(function(上一次值，当前值){},初始值)
+
+        // some 判断数组中是否有满足条件的元素 返回布尔值
+        // every 检测数组所有元素是否都符合指定条件 如果所有元素都通过检测 返回true 反之false
+
+        // concat 合并两个数组 返回生成新数组
+        // join 数组拼接为字符串 返回字符串
+        // splice 删除或替换原数组单元
+        // reverse 反转数组
+        // sort 对原数组单元排序
+        // findIndex 查找元素的索引值
+        // 遍历
+        const sumArray = ['121','135','165','2312'];
+        sumArray.forEach(function(item,index){
+            console.log(item);
+        })
+        // 使用箭头函数实现遍历
+        sumArray.forEach((item,index)=>{
+            console.log(item);
+        })
+        // 使用简洁语法 箭头函数实现遍历
+        sumArray.forEach(item=>console.log(item));
+
+        const total = sumArray.reduce(function(prev,current){
+            return prev+current;
+        },10)
+        console.log('有初始值'+ total);
+        const total1 = sumArray.reduce((prev,current) => 
+            prev+current,10)
+        console.log('有初始值'+ total1);
+
+        // 过滤出长度大于121的 组一个新数组
+        const newArr = sumArray.filter(function(item,index){
+            return item.length>121;
+        })
+        // 简洁写法
+        const newArr1 = sumArray.filter(item => item => 121)
+        console.log(newArr);
+
+        // 查找数组中满足条件的元素
+        const f = sumArray.find(function(item){
+            return  item === 121;
+        })
+        console.log(f);
+
+        const arrTestModel = [
+            {
+                name:'小米',
+                price:1999
+            },
+            {
+                name:'华为',
+                price:2999
+            },
+            {
+                name:'锤子',
+                price:3999
+            }
+        ]
+        // const test = arrTestModel.find(function(item){
+        //     return item.name === '锤子';
+        // })
+        const test = arrTestModel.find(item => item.name === '锤子');
+        console.log('find的状态是'+test);// 返回数 组元素 
+
+        const flag = sumArray.every(item => item => 200)
+        console.log('every状态是'+flag);
+
+    </script>
+</body>
+</html>

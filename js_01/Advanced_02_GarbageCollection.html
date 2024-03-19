@@ -58,62 +58,7 @@
             return sum
         }
         const sum1 = getSum(1, 2, 3, 4)
-        console.log(`1我的和是 ${sum1}`);
-
-        // 箭头函数的主要特点是它们不绑定自己的 this 值，而是捕获其所在上下文的 this 值。它们也没有 arguments 对象，但你可以使用剩余参数（...args）来达到类似的效果
-        // 无参数的箭头函数
-        const sayHello = () => {  
-            console.log('Hello, world!');  
-        };  
-        sayHello(); // 输出: Hello, world!
-
-        // 单个参数的箭头函数
-        const double = x => x * 2;  
-        // double 是一个接受一个参数 x 的箭头函数，它返回 x 的两倍。调用 double(5) 会返回 10。
-        console.log(double(5)); // 输出: 10
-
-        // 多个参数的箭头函数
-        const add = (a, b) => a + b; 
-        // add 函数接受两个参数 a 和 b，并返回它们的和。 
-        console.log(add(3, 4)); // 输出: 7
-
-        // 带有函数体的箭头函数
-        const greet = name => {  
-            const message = `Hello, ${name}!`;  
-            return message;  
-        };  
-        // greet 函数有一个函数体，它定义了一个局部变量 message 并返回它。虽然箭头函数可以没有花括号和 return 关键字（如果函数体只有一条表达式），但在这个例子中，我们使用了花括号来显示函数体的结构
-        console.log(greet('Alice')); // 输出: Hello, Alice!
-
-        // 使用剩余参数的箭头函数
-        const sumA = (...numbers) => numbers.reduce((acc, num) => acc + num, 0);  
-        // sum 函数使用了剩余参数 ...numbers 来收集所有传入的参数到一个数组中。然后，它使用 reduce 方法来计算这些数字的总和。
-        // acc（累加器）是 reduce 方法在每次迭代时累积的值。
-        // num 是当前正在处理的数组元素。
-        // (acc, num) => acc + num 是一个箭头函数，它接受当前累加器的值 acc 和当前元素的值 num，并返回它们的和。
-        // 当你调用 sum 函数时，reduce 会从累加器的初始值开始（在这里是 0），然后逐个加上数组中的每个数字。
-        // 例如，如果你调用 sum(1, 2, 3, 4, 5)，numbers 数组将会是 [1, 2, 3, 4, 5]。reduce 会这样工作：
-        // 初始累加器值：0
-        // 第一次迭代：0 + 1 = 1（累加器现在是 1）
-        // 第二次迭代：1 + 2 = 3（累加器现在是 3）
-        // 第三次迭代：3 + 3 = 6（累加器现在是 6）
-        // 第四次迭代：6 + 4 = 10（累加器现在是 10）
-        // 第五次迭代：10 + 5 = 15（累加器现在是 15）
-        // 最终，reduce 方法返回累加器的值，也就是所有数字的和，这里是 15。
-        // 因此，在 sum 函数中，0 是累加过程的起点，它确保了在没有提供任何数字时（即数组为空时），sum 函数仍然能够返回 0 而不是 undefined 或其他非预期的值。
-        console.log(sumA(1, 2, 3, 4, 5)); // 输出: 15
-        // 详细过程如下：...numbers 是剩余参数的语法,它允许你传递任意数量的额外参数给 sum 函数，并将它们收集到一个数组中
-        const sumB = (initialValue,...numbers) => {  
-        return numbers.reduce((acc, num) => {  
-            console.log(`当前累加器值: ${acc}, 当前数字: ${num}, 累加结果: ${acc + num}`);  
-            return acc + num;  
-        }, initialValue);  
-        };  
-        sumB(1, 2, 3, 4, 5);
-
-        const sumC = (initial, ...items) => items.reduce((accumulator, currentValue) => accumulator + currentValue, initial);  
-        const result2 = sumC(1, 2, 3, 4, 5); // 传入五个参数，其中1是初始值  
-        console.log(result2); // 输出: 15
+        console.log(`1我的和是 ${sum1}`);        
     </script>
 </body>
 
