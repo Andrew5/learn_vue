@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+    <div></div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
     <script>
         // 数组常见实例方法
 
@@ -81,6 +87,50 @@
         const flag = sumArray.every(item => item => 200)
         console.log('every状态是'+flag);
 
-    </script>
+        const hasLargeNumber = sumArray.some(function(number) {  
+            return number > 121;  
+        });  
+        const hasLargeNumber1 = sumArray.some(number => number > 121);  
+        console.log(hasLargeNumber,hasLargeNumber1); 
+
+        const spec = {size:`40*40`,color:`黑色`}
+        // 获取所有属性值 数组join('/') 把数组根据分隔符转换位字符串
+        console.log(Object.values(spec));
+        document.querySelector('div').innerHTML = Object.values(spec).join('/');
+        
+        // Array.from(lis) 把伪数组转换为真数组
+        const lis = document.querySelectorAll('ul li');
+        console.log(lis);// 伪数组
+
+        const liss = Array.from(lis)
+        console.log (liss);
+        liss.pop()
+
+
+        // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/substring
+        const str = 'hello [not] world';
+        const arr = str.split(' ');
+        console.log(arr);
+        
+        // 截取字符串 开始的索引号 结束的索引号
+        console.log(`截取字符串：${str.substring(6,11)}`);
+        console.log(`状态：${str.startsWith("not",7)}`);
+        console.log(`状态：${str.startsWith('he')}`);
+        console.log(`状态：${str.endsWith("world",12)}`);
+        console.log(`状态：${str.endsWith('world')}`);
+        console.log(`状态：${str.includes('world')}`);// 区分大小写
+        console.log(`状态：${str.split(` `)}`);
+        console.log(`状态：${str.toUpperCase}`);
+        console.log(`状态：${str.toLocaleLowerCase}`);
+        console.log(`状态：${str.indexOf('not')}`);
+        const strstr =  str.split(` `).map(function(item){
+            console.log(item);
+            return `测试+${item}`
+        }).join(' ')
+        // document.querySelector(`div`).innerHTML = strstr
+
+        document.querySelector(`div`).innerHTML = str.split(` `).map(item => `测试+${item}`).join('=')
+
+        </script>
 </body>
 </html>
