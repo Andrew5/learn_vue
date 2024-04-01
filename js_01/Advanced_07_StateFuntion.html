@@ -1,21 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
+    <div class="list">
+        <!-- <div class="item">
+            <imgsrc="https://yanxuan-item.nosdn.127.net/84a59ff9c58a77032564e61f716846d6.jpg"alt="">
+                </imgsrc>
+                <p class="name">称心如意手摇咖啡磨豆机咖啡豆研磨机<span class="tag">【赠品】10优惠券</span></p>
+                <p class="spec"> É t/10 </p>
+                <p class="price">289.90</p>
+                <p class="count">x2</p>
+                <p class="sub-total">579.80</р>
+        </div> -->
+    </div>
+    <div>
+        合计:
+        <span class="amount">
+            1536.20
+        </span>
+    </div>
     <script>
-        const o = {uname: 'hello world',age:18}
+        const o = { uname: 'hello world', age: 18 }
         console.log(Object.keys(o));
         console.log(Object.values(o));
 
         const oo = {}
-        Object.assign(oo,o)// 浅拷贝 后者拷贝给前者
+        Object.assign(oo, o)// 浅拷贝 后者拷贝给前者
         console.log(oo);
+        const goodsList = [
+            {
+                id: '4001172',
+                name: '撒上的发放',
+                price: 129,
+                count: 1,
+                spec: { size: '小号', color: '白色' },
+                gift: '我是赠品一号'
+            },
+            {
+                id: '23123213',
+                name: '撒上的发放',
+                price: 129,
+                count: 10,
+                spec: { size: '小号', color: '白色' },
+                gift: '我是赠品二号'
+            },
+            {
+                id: '791324312',
+                name: '撒上的发放',
+                price: 139,
+                count: 100,
+                spec: { size: '小号', color: '白色' },
+                gift: '我是赠品三号，宝马，奔驰'
+            }
+        ]
+
+        // 1、根据数据渲染页面
+        document.querySelector('.list').innerHTML = goodsList.map(item => {
+            // 对象解构
+            const {price,name,count,spec,gift} = item
+            // 处理规格文字模块
+            const text = Object.values(spec).join('/')
+            // 处理赠品模块
+            // const giftText = gift ? `<div class="gift">${gift}</div>` : ''
+        //    const str =  gift.split(',').map(item=>`<span class="tag">【赠品】${item}</span>`).join('')
+        // 如果有gift字段就展示，没有就不展示
+           const str = gift ? gift.split('，').map(item=>`<span class="tag">【赠品】${item}</span>`).join('') :''
+           // 处理价格 先处理为整数在处理为小数保留两位小数 （精度处理）
+           const subTotal = ((price * 100 * count) / 100).toFixed(2)
+            return `
+            <div class="item">
+            <img src="https://yanxuan-item.nosdn.127.net/84a59ff9c58a77032564e61f716846d6.jpg" alt="">
+                <p class="name">${name} ${str} </p>
+                <p class="spec">${text}</p>
+                <p class="price">¥${price.toFixed(2)}</p>
+                <p class="count">x${count}</p>
+                <p class="sub-total">¥${subTotal}</р>
+        </div>
+            `
+        }).join('')
+
+        // 合计模块
+        const total = goodsList.reduce((prev,item)=>prev + (item.price*100 * item.count)/100,0)
+        document.querySelector('.amount').innerHTML = total.toFixed(2)
 
         
-    </script>
+        // 每一个构造函数都有一个prototype属性，指向另一个对象
+        // 构造函数 公共的属性和方法 封装到Star方法构造函数里
+        // 公共的属性写到 构造函数里面
+        function Star(uname,age){
+            this.uname = uname
+            this.age = age
+            console.log(this);
+            // this.sing = function(){
+            //     console.log('我会唱歌');
+            // }
+        }
+        //  原型对象 = 本质属性
+        Star.prototype.sing = function(){
+            // 共享
+            console.log('我会唱歌');
+        }
+        const ldh = new Star('刘德华',55)
+        const zxy = new Star('张学友',58)
+        console.log(ldh);
+        console.log(zxy);
+        ldh.sing()
+        zxy.sing()
+        console.log(ldh.sing === zxy.sing);
+        // 原型对象
+        console.log(Star.prototype);
+        </script>
 </body>
+
 </html>
