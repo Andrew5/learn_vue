@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Woman(){
+            this.eays = 2
+            this.head = 1
+        }
+        const red = new Woman()
+        console.log(red.eays)
+        function Man(){
+            this.eays = 2
+            this.head = 1
+        }
+        const pink = new Man()
+        console.log(pink.eays)
+        // 定义构造函数
+        function Lili() {
+
+        }
+        // 抽取
+        const Person = {
+            eays:2,
+            head:1
+        }
+        // 继承Person
+        // 公共参数放在原型上
+        Woman.prototype = Person
+        const woman = new Woman()
+        console.log(woman.eays)
+
+        Man.prototype = Person
+
+
+
+        Lili.prototype = Person
+        // 通过 原型继承Person
+        Lili.prototype.constructor = Lili
+        Lili.prototype.baby = function () {
+            console.log('宝呗');
+        }
+        const lili = new Lili()
+        console.log(lili.head)
+        console.log(`是否一个：${lili instanceof Lili}`)
+        console.log(`测试结果 ${lili instanceof Person}`)
+        console.log(`测试结果 ${lili instanceof Object}`)
+
+        //     console.log( `num99的值是多少: ${num99}`)
+        //     console.log( 'num99的值是多少: '+ num99)
+        //     console.log("num99的值是多少: "+ num99)
+
+    </script>
+</body>
+</html>

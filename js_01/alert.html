@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = "delete">删除</button>
+    <button id = "login">登陆</button>
+    <button id = "add">添加</button>
+
+    <!-- <div class="modal"> -->
+        <!-- <div class="header">温馨提示 <i>x</i></div>
+        <div class="body">您没有删除权限操作</div> -->
+    <!-- </div> -->
+
+    <script>
+    // 1、modal 构造函数封装 - 模态框
+    function Modal(title = '',message=''){
+        console.log(title,message);
+        // 创建modal 模态框盒子
+        // 创建div标签
+        this.modalBox = document.createElement('div')
+        // 给div标签添加类名modal
+        this.modalBox.className = 'modal'
+        // modal 盒子内部填充2个div标签并且修改文字内容
+        this.modalBox.innerHTML = `
+        <div class="header">${title} <i>x</i></div>
+        <div class="body">${message}</div>
+        `
+         console.log(this.modalBox);   
+    }
+    new Modal('温馨提示','您没有删除权限操作')
+    new Modal('友情提示','您还没有登录')
+
+    // 2、modal 原型对象封装 - 模态框
+    Modal.prototype.open = function(){
+        // 先判断是否有modal盒子 如果有 先删除 否则继续添加
+        const box = document.querySelector('.modal')
+        box && box.remove()
+            
+        // 获取body 标签
+        // var body = document.querySelector('body')
+        // 把modal 盒子添加到body 标签内部
+        // body.appendChild(this.modalBox) 
+
+        document.body.append(this.modalBox)
+        //  要等着盒子显示出来 就可以绑定点击事件
+        this.modalBox.querySelector('i').addEventListener('click',()=>{
+            this.close()
+        })
+    }
+
+    Modal.prototype.close = function(){
+        // 获取body 标签
+        // var body = document.querySelector('body')
+        // 把modal 盒子添加到body 标签内部
+        // body.removeChild(this.modalBox)
+        this.modalBox.remove()
+    }
+    document.querySelector('#delete').onclick = function(){
+        // 创建模态框对象
+        var modal = new Modal('温馨提示','您没有删除权限操作')
+        // 打开模态框
+        modal.open()
+    }
+    document.querySelector('#login').addEventListener('click',function(){
+        // 创建模态框对象
+        var modal = new Modal('友情提示','您还没有登录')
+        // 打开模态框
+        modal.open()//
+    })
+
+    document.querySelector('#add').addEventListener('click',function(){
+        // 创建模态框对象
+        var modal = new Modal('友情提示','您还没有新增权限')
+        // 打开模态框
+        modal.open()
+    })
+    </script>
+</body>
+
+</html>

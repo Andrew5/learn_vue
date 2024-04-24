@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Star() {
+            // 对象都会有一个属性—proto_
+            // 指向构造函数的prototype原型对象，之所以我们对象可以使用构造函数prototype
+            // 原型对象的属性和方法，就是因为对象有_proto__原型的存在。
+        }
+        const ldh = new Star();
+        ldh.name = '刘德华';
+        // 对象原型__proto__指向构造函数的原型对象prototype
+        console.log(Star.prototype);
+        console.log(ldh.__proto__ === Star.prototype);
+        // 对象原型里面有constructor指间构造函数Star
+        console.log(ldh.__proto__.constructor === Star);
+        // Prototype 构造函数都自动有原型
+        // __proto__对象原型指向原型对象
+    </script>
+</body>
+
+</html>

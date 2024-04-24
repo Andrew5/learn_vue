@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Star() {
+/*
+constructor 使用场景
+如果有多个对象的方法，我们可以给原型对象采取对象形式赋值. 但是这样就会覆盖构造函数原型对象原来的内容，这样修改后的原型对象constructor就不再指向当前构造
+
+此时，我们可以在修改后的原型对象中，添加一个constructor指向原来的构造函数
+*/
+
+        }
+        Star.prototype.sing = function() {
+            console.log('我会唱歌');
+        }
+        Star.prototype.dance = function() {
+            console.log('我会跳舞');
+        }
+        Star.prototype = {
+            // 重新指回创造这个原型对象的 构造函数
+            constructor:Star,
+            // 指向原型的构造函数 
+            sing:function(){
+                console.log('我会唱歌');
+            },
+            dance:function(){
+                console.log('我会跳舞');
+            }
+        }
+        console.log(Star.prototype);
+    </script>
+</body>
+</html>

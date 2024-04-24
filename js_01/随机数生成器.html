@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机数生成器</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+        }
+
+        .input-container input {
+            margin: 0 25px;
+            /* 间距的一半，因为两个输入框都会有这个margin */
+            padding: 5px;
+        }
+
+        .result-box {
+            margin-top: 100px; /* 设置结果显示框距离顶部的间距为100px */  
+            width: 100px;
+            /* 设置结果显示框的宽度为100px */
+            height: 50px;
+            /* 设置结果显示框的高度为50px */
+            line-height: 50px;
+            /* 设置行高与高度相同，实现文本垂直居中 */
+            text-align: center;
+            /* 文本水平居中 */
+            border: 1px solid #000;
+            /* 可选的边框，以便更好地看到尺寸 */
+            overflow: hidden;
+            /* 如果内容超出盒子，则隐藏超出部分 */
+            white-space: nowrap;
+            /* 防止文本换行 */
+        }
+
+        button {
+            width: 100px;
+            /* 设置按钮宽度为100px */
+            height: 50px;
+            /* 设置按钮高度为50px */
+            padding: 0;
+            /* 确保按钮内的文本不会由于内边距而移位 */
+            box-sizing: border-box;
+            /* 确保宽度和高度包括边框和内边距 */
+            line-height: 50px;
+            /* 设置行高与按钮高度相同，实现文本垂直居中 */
+            text-align: center;
+            /* 确保文本水平居中 */
+            cursor: pointer;
+            /* 鼠标悬停时显示小手图标 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="result-box">结果：<span id="result"></span></div>
+
+    <div class="input-container">
+        <input type="number" id="min" placeholder="输入最小值">
+        <input type="number" id="max" placeholder="输入最大值">
+    </div>
+
+    <button onclick="generateRandomNumber()">开始</button>
+
+    <script>
+        function generateRandomNumber() {
+            var min = parseInt(document.getElementById('min').value, 10);
+            var max = parseInt(document.getElementById('max').value, 10);
+            var resultElement = document.getElementById('result');
+
+
+            if (!isNaN(min) && !isNaN(max) && min < max) {
+                var randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+                resultElement.textContent = randomNum;
+            } else {
+                resultElement.textContent = '请输入有效的数字范围';
+            }
+        }  
+    </script>
+</body>
+
+</html>

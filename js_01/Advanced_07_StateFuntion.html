@@ -63,16 +63,16 @@
         // 1、根据数据渲染页面
         document.querySelector('.list').innerHTML = goodsList.map(item => {
             // 对象解构
-            const {price,name,count,spec,gift} = item
+            const { price, name, count, spec, gift } = item
             // 处理规格文字模块
             const text = Object.values(spec).join('/')
             // 处理赠品模块
             // const giftText = gift ? `<div class="gift">${gift}</div>` : ''
-        //    const str =  gift.split(',').map(item=>`<span class="tag">【赠品】${item}</span>`).join('')
-        // 如果有gift字段就展示，没有就不展示
-           const str = gift ? gift.split('，').map(item=>`<span class="tag">【赠品】${item}</span>`).join('') :''
-           // 处理价格 先处理为整数在处理为小数保留两位小数 （精度处理）
-           const subTotal = ((price * 100 * count) / 100).toFixed(2)
+            //    const str =  gift.split(',').map(item=>`<span class="tag">【赠品】${item}</span>`).join('')
+            // 如果有gift字段就展示，没有就不展示
+            const str = gift ? gift.split('，').map(item => `<span class="tag">【赠品】${item}</span>`).join('') : ''
+            // 处理价格 先处理为整数在处理为小数保留两位小数 （精度处理）
+            const subTotal = ((price * 100 * count) / 100).toFixed(2)
             return `
             <div class="item">
             <img src="https://yanxuan-item.nosdn.127.net/84a59ff9c58a77032564e61f716846d6.jpg" alt="">
@@ -86,14 +86,14 @@
         }).join('')
 
         // 合计模块
-        const total = goodsList.reduce((prev,item)=>prev + (item.price*100 * item.count)/100,0)
+        const total = goodsList.reduce((prev, item) => prev + (item.price * 100 * item.count) / 100, 0)
         document.querySelector('.amount').innerHTML = total.toFixed(2)
 
-        
+
         // 每一个构造函数都有一个prototype属性，指向另一个对象
         // 构造函数 公共的属性和方法 封装到Star方法构造函数里
         // 公共的属性写到 构造函数里面
-        function Star(uname,age){
+        function Star(uname, age) {
             this.uname = uname
             this.age = age
             console.log(this);
@@ -102,12 +102,12 @@
             // }
         }
         //  原型对象 = 本质属性
-        Star.prototype.sing = function(){
+        Star.prototype.sing = function () {
             // 共享
             console.log('我会唱歌');
         }
-        const ldh = new Star('刘德华',55)
-        const zxy = new Star('张学友',58)
+        const ldh = new Star('刘德华', 55)
+        const zxy = new Star('张学友', 58)
         console.log(ldh);
         console.log(zxy);
         ldh.sing()
@@ -115,7 +115,49 @@
         console.log(ldh.sing === zxy.sing);
         // 原型对象
         console.log(Star.prototype);
-        </script>
+
+
+        // 数组 扩展方法 求和 和 最大值
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        Array.prototype.max = function () {
+            // 展开运算符
+            // 原型函数里的this 指向实力对象arr
+            return Math.max(...this)
+        }
+        console.log(arr.max());
+        // 事例
+        console.log([2, 6, 95].max());
+
+        Array.prototype.min = function () {
+            // 展开运算符
+            // 原型函数里的this 指向实力对象arr
+            return Math.min(...this)
+        }
+        // 事例
+        console.log([2, 6, 95].min());
+
+        // 求和
+        Array.prototype.sum = function () {
+            // 展开运算符
+            // 原型函数里的this 指向实力对象arr
+            return this.reduce((prev,item) => prev + item ,0)//参数:()=>{} 起始值:0
+        }
+        // 事例
+        console.log([2, 6, 95].sum());
+
+        // 构造器 构造函数
+        function Test() {
+        }
+        // 原型对象
+        Test.prototype.eat = function () {
+            console.log('我');
+        }
+        const ldhldh = new Test()
+        console.log(Test.prototype);
+        console.profile('测试项目')
+        console.profileEnd('测试项目')
+
+    </script>
 </body>
 
 </html>
